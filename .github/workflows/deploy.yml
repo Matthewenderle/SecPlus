@@ -1,0 +1,36 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Stage static assets
+        run: |
+          mkdir -p public
+          cp index.html public/
+          cp questions.json public/
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          wranglerVersion: "4"
+          # On pull requests, deploy to a preview environment instead of production
+          command: ${{ github.event_name == 'pull_request' && 'deploy --env preview' || 'deploy' }}

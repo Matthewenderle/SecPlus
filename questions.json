@@ -1,0 +1,2242 @@
+[
+  {
+    "id": 1,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Concepts",
+    "question": "Which of the following BEST describes the CIA Triad?",
+    "options": [
+      "Confidentiality, Integrity, and Availability",
+      "Control, Identity, and Authentication",
+      "Compliance, Integrity, and Authorization",
+      "Confidentiality, Identification, and Accountability"
+    ],
+    "answer": 0,
+    "explanation": "The CIA Triad stands for Confidentiality (only authorized persons can read data), Integrity (data is stored and transferred as intended), and Availability (data is accessible to authorized users). These three properties are the foundation of information security."
+  },
+  {
+    "id": 2,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Concepts",
+    "question": "A user cannot deny sending a digitally signed message. Which security property does this demonstrate?",
+    "options": [
+      "Confidentiality",
+      "Availability",
+      "Non-repudiation",
+      "Integrity"
+    ],
+    "answer": 2,
+    "explanation": "Non-repudiation means a person cannot deny performing an action—such as creating, modifying, or sending a resource. Digital signatures support non-repudiation because only the sender's private key could have created the signature."
+  },
+  {
+    "id": 3,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "A company deploys motion-activated floodlights around its facility. How should this control be BEST classified?",
+    "options": [
+      "Technical and preventive",
+      "Physical and detective/deterrent",
+      "Operational and corrective",
+      "Managerial and directive"
+    ],
+    "answer": 1,
+    "explanation": "Motion-activated floodlights are a physical control (hardware-based, not software). Their function is both detective (they activate when movement is detected) and deterrent (they psychologically discourage intruders)."
+  },
+  {
+    "id": 4,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "A firewall blocks a packet that violates policy AND automatically updates its ACL to block the source IP. Which TWO functional control types did it perform?",
+    "options": [
+      "Directive and compensating",
+      "Detective and deterrent",
+      "Preventive and corrective",
+      "Operational and managerial"
+    ],
+    "answer": 2,
+    "explanation": "Blocking the packet is a preventive action (stops the attack before damage occurs). Updating the ACL to block future packets is corrective (eliminates or reduces the impact of a policy violation after detection)."
+  },
+  {
+    "id": 5,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Concepts",
+    "question": "An organization performs a formal evaluation of how its security posture deviates from a chosen cybersecurity framework. What process is this?",
+    "options": [
+      "Penetration testing",
+      "Risk assessment",
+      "Gap analysis",
+      "Threat modeling"
+    ],
+    "answer": 2,
+    "explanation": "Gap analysis identifies how an organization's security systems deviate from those required or recommended by a framework. It results in an overall score, a list of missing controls, and remediation recommendations."
+  },
+  {
+    "id": 6,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which IAM process involves creating an account or ID that uniquely represents a user on a network?",
+    "options": [
+      "Authentication",
+      "Authorization",
+      "Identification",
+      "Accounting"
+    ],
+    "answer": 2,
+    "explanation": "Identification is the process of creating an account or ID that uniquely represents a user, device, or process on the network. Authentication (proving identity), Authorization (granting rights), and Accounting (tracking usage) follow identification."
+  },
+  {
+    "id": 7,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which security business unit embeds security expertise directly into software development and operations teams?",
+    "options": [
+      "Security Operations Center (SOC)",
+      "Computer Incident Response Team (CIRT)",
+      "DevSecOps",
+      "Chief Information Security Officer (CISO)"
+    ],
+    "answer": 2,
+    "explanation": "DevSecOps extends DevOps to include security specialists, reflecting that security is a primary consideration at every stage of software development and deployment—also known as 'shift left.' The SOC monitors ongoing operations, while CIRT handles incident response."
+  },
+  {
+    "id": 8,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "A security control is classified as 'operational and compensating.' What does this tell you about it?",
+    "options": [
+      "It is software-based and acts as a deterrent",
+      "It is enforced by people and substitutes for a primary control",
+      "It is hardware-based and prevents access",
+      "It is policy-based and detects intrusions"
+    ],
+    "answer": 1,
+    "explanation": "Operational means the control is implemented primarily by people rather than technology. Compensating means it is a substitute for a recommended principal control, affording the same or better level of protection using a different methodology."
+  },
+  {
+    "id": 9,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Threat Actors",
+    "question": "Which of the following is assessed by calculating BOTH likelihood and impact?",
+    "options": [
+      "Vulnerability",
+      "Threat",
+      "Risk",
+      "Exploit"
+    ],
+    "answer": 2,
+    "explanation": "Risk is the level of hazard posed by vulnerabilities and threats. It is calculated as the likelihood that a vulnerability will be exploited by a threat actor AND the impact that a successful exploit would have."
+  },
+  {
+    "id": 10,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Threat Actors",
+    "question": "A threat actor uses cyber weapons primarily to further a political agenda, targeting companies whose practices they oppose. Which threat actor type BEST describes this group?",
+    "options": [
+      "Nation-state actor",
+      "Hacktivist",
+      "Organized crime",
+      "Unskilled attacker"
+    ],
+    "answer": 1,
+    "explanation": "Hacktivists, such as Anonymous, use cyber weapons to promote a political agenda. They may use data exfiltration, service disruption, or website defacement to spread disinformation, and target organizations based on ethical or philosophical objections."
+  },
+  {
+    "id": 11,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Threat Actors",
+    "question": "Which term describes a threat actor's ability to achieve ONGOING compromise of a network—obtaining and maintaining access using a variety of tools and techniques?",
+    "options": [
+      "Zero-day exploit",
+      "Advanced Persistent Threat (APT)",
+      "Ransomware-as-a-Service",
+      "Shadow IT"
+    ],
+    "answer": 1,
+    "explanation": "APT (Advanced Persistent Threat) was coined to describe adversaries—often nation-state actors—who achieve and maintain ongoing network access using diverse tools and techniques, rather than a single infection event."
+  },
+  {
+    "id": 12,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Threat Actors",
+    "question": "An employee who is unaware of security policies accidentally installs unauthorized cloud software on a corporate workstation. How is this threat BEST classified?",
+    "options": [
+      "External structured threat",
+      "Malicious insider threat",
+      "Unintentional insider threat / Shadow IT",
+      "Supply chain attack"
+    ],
+    "answer": 2,
+    "explanation": "Unintentional insider threats arise from lack of awareness or carelessness. Shadow IT—where users introduce hardware or software without IT sanction—is a key example. It creates unmonitored attack surfaces without malicious intent."
+  },
+  {
+    "id": 13,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Attack Surfaces",
+    "question": "A threat actor compromises a pizza delivery company's website to infect the computers of employees at a financial firm who regularly order from it. What type of attack is this?",
+    "options": [
+      "Phishing",
+      "Watering hole attack",
+      "Supply chain attack",
+      "Vishing"
+    ],
+    "answer": 1,
+    "explanation": "A watering hole attack targets a group by compromising a third-party website that the target group regularly visits. The pizza delivery site is the 'watering hole' that the financial firm's employees frequent."
+  },
+  {
+    "id": 14,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Attack Surfaces",
+    "question": "An attacker registers the domain 'exannple.com' to trick users into trusting it as the legitimate 'example.com.' What technique is this?",
+    "options": [
+      "Pharming",
+      "Vishing",
+      "Typosquatting",
+      "Business email compromise"
+    ],
+    "answer": 2,
+    "explanation": "Typosquatting means registering a domain name very similar to a real one, hoping users won't notice the difference. These are also called cousin, lookalike, or doppelganger domains."
+  },
+  {
+    "id": 15,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "An attacker calls a target's organization claiming to be from IT support and uses details about colleagues and systems to appear credible. What social engineering technique is being used?",
+    "options": [
+      "Pharming",
+      "Pretexting",
+      "Typosquatting",
+      "SMiShing"
+    ],
+    "answer": 1,
+    "explanation": "Pretexting involves crafting a believable story with convincing details—such as colleague names, job titles, and system details—to support an impersonation attack. The more privileged information obtained in advance, the more effective the pretext."
+  },
+  {
+    "id": 16,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Attack Surfaces",
+    "question": "An attacker corrupts DNS resolution on a victim's machine so that 'mybank.com' resolves to a malicious IP. What type of attack is this?",
+    "options": [
+      "Phishing",
+      "SMiShing",
+      "Pharming",
+      "Vishing"
+    ],
+    "answer": 2,
+    "explanation": "Pharming redirects users from a legitimate website to a malicious one by corrupting name resolution (e.g., DNS cache poisoning). Unlike phishing, the user doesn't need to click a malicious link—they are redirected transparently."
+  },
+  {
+    "id": 17,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "Which type of encryption uses the SAME key for both encryption and decryption?",
+    "options": [
+      "Asymmetric encryption",
+      "Symmetric encryption",
+      "Hashing",
+      "Public key cryptography"
+    ],
+    "answer": 1,
+    "explanation": "Symmetric encryption uses a single shared secret key for both encryption and decryption. It is fast and suitable for bulk data encryption, but the challenge is securely exchanging the key between parties."
+  },
+  {
+    "id": 18,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "Alice encrypts a file using Bob's PUBLIC key. Who can decrypt the ciphertext?",
+    "options": [
+      "Anyone with Bob's public key",
+      "Alice, using her private key",
+      "Only Bob, using his private key",
+      "Both Alice and Bob, using their respective private keys"
+    ],
+    "answer": 2,
+    "explanation": "In asymmetric encryption, a message encrypted with a recipient's public key can ONLY be decrypted by that recipient's private key. The public key cannot decrypt the message, ensuring confidentiality."
+  },
+  {
+    "id": 19,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "Which security property is PRIMARILY provided by a cryptographic hash function?",
+    "options": [
+      "Confidentiality",
+      "Non-repudiation",
+      "Integrity",
+      "Availability"
+    ],
+    "answer": 2,
+    "explanation": "Hash functions produce a fixed-length digest from variable-length input. Because any change to the input produces a different digest, hashing is used to verify integrity—confirming data has not been tampered with in transit or storage."
+  },
+  {
+    "id": 20,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "AES-256 has a keyspace of 2^256. Compared to AES-128 (keyspace 2^128), AES-256 is:",
+    "options": [
+      "Twice as resistant to brute-force attacks",
+      "128 times more resistant to brute-force attacks",
+      "Many trillions of times more resistant to brute-force attacks",
+      "Equally resistant, since both are considered secure"
+    ],
+    "answer": 2,
+    "explanation": "AES-256's keyspace is not simply twice that of AES-128—because the keyspace is exponential, it is many trillions of times larger (2^128 additional possible keys), making it significantly more resistant to brute-force cryptanalysis."
+  },
+  {
+    "id": 21,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "A digital signature is created by signing a HASH of a message with the sender's PRIVATE key. What two security properties does a digital signature provide?",
+    "options": [
+      "Confidentiality and availability",
+      "Authentication and integrity",
+      "Authorization and accounting",
+      "Availability and non-repudiation"
+    ],
+    "answer": 1,
+    "explanation": "A digital signature authenticates the sender (only the holder of the private key could have created the signature) and proves integrity (any alteration to the message would produce a different hash, invalidating the signature)."
+  },
+  {
+    "id": 22,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Public Key Infrastructure",
+    "question": "What is the PRIMARY purpose of a Certificate Authority (CA) in a PKI?",
+    "options": [
+      "To generate symmetric encryption keys for users",
+      "To validate the identity of public key owners via digital certificates",
+      "To store encrypted data on behalf of users",
+      "To perform gap analysis on cryptographic controls"
+    ],
+    "answer": 1,
+    "explanation": "A CA validates and certifies that the owners of public keys are who they claim to be. It issues digital certificates that bind a public key to a verified subject identity, establishing trust in public key cryptography."
+  },
+  {
+    "id": 23,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Public Key Infrastructure",
+    "question": "In a hierarchical PKI, a root CA issues certificates to intermediate CAs, which then issue certificates to end entities. What is this chain called?",
+    "options": [
+      "Key escrow",
+      "Chain of trust / certificate chaining",
+      "Self-signed delegation",
+      "Registration authority"
+    ],
+    "answer": 1,
+    "explanation": "In a hierarchical PKI model, each leaf certificate can be traced back to the root CA through intermediate CAs. This is called certificate chaining or a chain of trust, allowing systems to verify a certificate's validity through the hierarchy."
+  },
+  {
+    "id": 24,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Public Key Infrastructure",
+    "question": "A web server administrator generates a key pair and submits a file containing the public key and identifying information to a CA for approval. What is this file called?",
+    "options": [
+      "Digital certificate",
+      "Root certificate",
+      "Certificate Signing Request (CSR)",
+      "Certificate Revocation List (CRL)"
+    ],
+    "answer": 2,
+    "explanation": "A Certificate Signing Request (CSR) is submitted by a subject to a CA. It contains the subject's public key and identifying information. The CA reviews the CSR, validates the identity, and if approved, signs and issues the digital certificate."
+  },
+  {
+    "id": 25,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "Which of the following combinations is TRUE multi-factor authentication?",
+    "options": [
+      "A password and a PIN",
+      "A fingerprint scan and a retina scan",
+      "A smart card and a PIN",
+      "A username and a password"
+    ],
+    "answer": 2,
+    "explanation": "True MFA combines factors from DIFFERENT categories: something you know (PIN), something you have (smart card), or something you are (biometrics). A smart card (something you have) + PIN (something you know) = two distinct factor types."
+  },
+  {
+    "id": 26,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authorization",
+    "question": "In which access control model can the OWNER of a resource decide who else may access it?",
+    "options": [
+      "Mandatory Access Control (MAC)",
+      "Role-Based Access Control (RBAC)",
+      "Discretionary Access Control (DAC)",
+      "Attribute-Based Access Control (ABAC)"
+    ],
+    "answer": 2,
+    "explanation": "In Discretionary Access Control (DAC), the object owner has discretion to grant access rights to other subjects. In Mandatory Access Control (MAC), rights are predetermined by system-enforced rules that users cannot change."
+  },
+  {
+    "id": 27,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Concepts",
+    "question": "The NIST Cybersecurity Framework identifies five core functions. Which function involves performing ONGOING, PROACTIVE monitoring to ensure controls are effective?",
+    "options": [
+      "Identify",
+      "Protect",
+      "Detect",
+      "Respond"
+    ],
+    "answer": 2,
+    "explanation": "The Detect function involves ongoing, proactive monitoring to ensure controls are effective and capable of protecting against new threats. The other functions are: Identify (develop policies), Protect (install/operate assets securely), Respond (contain threats), and Recover (restore systems)."
+  },
+  {
+    "id": 28,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Attack Surfaces",
+    "question": "An attacker runs malicious code on a system by simply sending packets to it over the network WITHOUT needing valid credentials. What type of exploit is this?",
+    "options": [
+      "Local exploit",
+      "Remote exploit",
+      "On-path attack",
+      "Privilege escalation"
+    ],
+    "answer": 1,
+    "explanation": "A remote exploit means the vulnerability can be exploited by sending code to the target over a network and does NOT depend on an authenticated session. A local exploit, by contrast, requires the attacker to first have an authenticated session."
+  },
+  {
+    "id": 29,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Attack Surfaces",
+    "question": "A managed service provider (MSP) is compromised, and attackers use the MSP's privileged access to attack one of its clients. What is this attack surface called?",
+    "options": [
+      "Insider threat",
+      "Direct access attack",
+      "Supply chain attack",
+      "Watering hole attack"
+    ],
+    "answer": 2,
+    "explanation": "A supply chain attack targets an organization by first compromising a supplier, vendor, or MSP that has trusted access. The Target data breach via its HVAC vendor and the Kaseya ransomware attack via MSPs are well-known examples."
+  },
+  {
+    "id": 30,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "A highly targeted phishing attack focuses on a specific senior executive of a company. The attacker researches the target extensively. This attack is BEST known as:",
+    "options": [
+      "Vishing",
+      "SMiShing",
+      "Spear phishing / whaling",
+      "Brand impersonation"
+    ],
+    "answer": 2,
+    "explanation": "Spear phishing is a targeted phishing attack aimed at a specific individual. When the target is a senior executive (C-suite), it is also called whaling. These attacks are distinguished from mass-mailer phishing by their high degree of personalization and research."
+  },
+  {
+    "id": 31,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "An organization wants to grant users access to multiple internal applications after a single login. Which solution BEST meets this requirement?",
+    "options": [
+      "SSO",
+      "RADIUS",
+      "TOTP",
+      "PAM"
+    ],
+    "answer": 0,
+    "explanation": "Single sign-on (SSO) allows a user to authenticate once and then access multiple applications without re-entering credentials for each one. This improves usability while centralizing identity management."
+  },
+  {
+    "id": 32,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "A company wants an identity provider to send authentication assertions to a cloud service provider. Which technology is MOST commonly used for this purpose?",
+    "options": [
+      "WPA3",
+      "SAML",
+      "SNMPv3",
+      "SSH"
+    ],
+    "answer": 1,
+    "explanation": "Security Assertion Markup Language (SAML) is commonly used to exchange authentication and authorization data between an identity provider and a service provider, especially for web-based SSO."
+  },
+  {
+    "id": 33,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Concepts",
+    "question": "Which statement BEST reflects the Zero Trust model?",
+    "options": [
+      "Internal users should be trusted by default",
+      "Trust is granted after network location is verified",
+      "No user or device should be trusted implicitly",
+      "Only external traffic must be inspected"
+    ],
+    "answer": 2,
+    "explanation": "Zero Trust assumes that no user, workload, or device should be trusted implicitly, even if it is already inside the network. Access should be continuously verified and granted using least privilege."
+  },
+  {
+    "id": 34,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which control would BEST protect data on a stolen company laptop?",
+    "options": [
+      "Screen timeout",
+      "Full-disk encryption",
+      "Antivirus signatures",
+      "Account lockout"
+    ],
+    "answer": 1,
+    "explanation": "Full-disk encryption protects the confidentiality of data stored on a device if the hardware is lost or stolen. Without the decryption key or credentials, the data remains inaccessible."
+  },
+  {
+    "id": 35,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which technology primarily aggregates logs from many systems and correlates events to identify suspicious activity?",
+    "options": [
+      "SIEM",
+      "DLP",
+      "HSM",
+      "CASB"
+    ],
+    "answer": 0,
+    "explanation": "A Security Information and Event Management (SIEM) platform collects logs from multiple sources and correlates them to help detect malicious behavior, policy violations, and indicators of compromise."
+  },
+  {
+    "id": 36,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which solution is BEST suited to automatically isolate an endpoint after detecting malicious behavior on that device?",
+    "options": [
+      "EDR",
+      "VPN",
+      "WAF",
+      "Proxy server"
+    ],
+    "answer": 0,
+    "explanation": "Endpoint Detection and Response (EDR) tools monitor endpoint activity and can automatically contain a compromised host, such as isolating it from the network to prevent lateral movement."
+  },
+  {
+    "id": 37,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Data Protection",
+    "question": "A payment processor replaces a credit card number with a random surrogate value that has no mathematical relationship to the original number. What is this technique called?",
+    "options": [
+      "Hashing",
+      "Tokenization",
+      "Obfuscation",
+      "Masking"
+    ],
+    "answer": 1,
+    "explanation": "Tokenization replaces sensitive data with a non-sensitive token. The original value is stored separately, reducing exposure of payment card data in downstream systems."
+  },
+  {
+    "id": 38,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Data Protection",
+    "question": "Which technology is MOST appropriate for preventing sensitive data such as Social Security numbers from leaving the organization by email?",
+    "options": [
+      "DLP",
+      "NAC",
+      "IDS",
+      "Load balancer"
+    ],
+    "answer": 0,
+    "explanation": "Data Loss Prevention (DLP) solutions inspect data at rest, in use, or in transit and can block or alert on attempts to transmit sensitive information outside approved channels."
+  },
+  {
+    "id": 39,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which term refers to the maximum acceptable amount of data loss measured in time after a disruption?",
+    "options": [
+      "MTTR",
+      "RTO",
+      "RPO",
+      "SLA"
+    ],
+    "answer": 2,
+    "explanation": "Recovery Point Objective (RPO) defines how much data loss an organization can tolerate, measured as the point in time to which data must be restored after an incident."
+  },
+  {
+    "id": 40,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which term refers to the target amount of time allowed to restore a system after an outage?",
+    "options": [
+      "RTO",
+      "RPO",
+      "MFA",
+      "MTBF"
+    ],
+    "answer": 0,
+    "explanation": "Recovery Time Objective (RTO) is the target duration within which a service or system should be restored after a disruption to avoid unacceptable business impact."
+  },
+  {
+    "id": 41,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "An organization wants to enforce passcodes, require device encryption, and remotely wipe lost smartphones. Which solution BEST fits this requirement?",
+    "options": [
+      "MDM",
+      "SIEM",
+      "PAM",
+      "UTM"
+    ],
+    "answer": 0,
+    "explanation": "Mobile Device Management (MDM) solutions allow administrators to enforce security settings on smartphones and tablets, including screen locks, encryption, app control, and remote wipe."
+  },
+  {
+    "id": 42,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "A standardized, preconfigured operating system installation used to deploy secure endpoints is BEST described as a:",
+    "options": [
+      "Snapshot",
+      "Golden image",
+      "Sandbox",
+      "Baseline exception"
+    ],
+    "answer": 1,
+    "explanation": "A golden image is a known-good, standardized system image used to deploy devices consistently. It helps enforce secure baselines and reduce configuration drift."
+  },
+  {
+    "id": 43,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Password Attacks",
+    "question": "An attacker tries the password 'Winter2026!' against hundreds of different user accounts to avoid lockouts. What type of attack is this?",
+    "options": [
+      "Credential stuffing",
+      "Password spraying",
+      "Brute-force cracking",
+      "Rainbow table attack"
+    ],
+    "answer": 1,
+    "explanation": "Password spraying uses a small number of commonly used passwords across many accounts. This helps attackers avoid triggering account lockout thresholds tied to repeated attempts on one account."
+  },
+  {
+    "id": 44,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Network Attacks",
+    "question": "An attacker secretly intercepts and alters traffic between two systems that believe they are communicating directly with each other. What type of attack is this?",
+    "options": [
+      "On-path attack",
+      "Replay attack",
+      "Watering hole attack",
+      "Directory traversal"
+    ],
+    "answer": 0,
+    "explanation": "An on-path attack, sometimes called a machine-in-the-middle attack, occurs when an attacker places themselves between two communicating parties to intercept, monitor, or modify traffic."
+  },
+  {
+    "id": 45,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "A web application builds database queries directly from unsanitized user input. Which vulnerability does this MOST likely create?",
+    "options": [
+      "SQL injection",
+      "Cross-site request forgery",
+      "Buffer overflow",
+      "DLL injection"
+    ],
+    "answer": 0,
+    "explanation": "SQL injection occurs when unsanitized input is inserted into database queries, allowing an attacker to manipulate the query and potentially read, modify, or delete data."
+  },
+  {
+    "id": 46,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Malware",
+    "question": "Malicious code is programmed to execute only when a specific condition is met, such as a date or a user action. What is this called?",
+    "options": [
+      "Rootkit",
+      "Worm",
+      "Logic bomb",
+      "Keylogger"
+    ],
+    "answer": 2,
+    "explanation": "A logic bomb is malicious code that remains dormant until a predefined condition is met. Once triggered, it performs its payload, such as deleting files or disrupting operations."
+  },
+  {
+    "id": 47,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "A user receives a text message claiming their payroll account is locked and is told to click a link immediately. What type of attack is this?",
+    "options": [
+      "Vishing",
+      "SMiShing",
+      "Pretexting",
+      "Tailgating"
+    ],
+    "answer": 1,
+    "explanation": "SMiShing is phishing delivered through SMS or other text messaging platforms. It relies on urgency and impersonation to trick victims into clicking malicious links or revealing information."
+  },
+  {
+    "id": 48,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Wireless Attacks",
+    "question": "An attacker sets up a wireless access point named 'Corporate-WiFi' near an office to trick employees into connecting. What is this called?",
+    "options": [
+      "Evil twin",
+      "Wardriving",
+      "Bluejacking",
+      "Jamming"
+    ],
+    "answer": 0,
+    "explanation": "An evil twin is a rogue wireless access point configured to look like a legitimate network. Users who connect may expose credentials or send traffic through the attacker's system."
+  },
+  {
+    "id": 49,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "An attacker inserts malicious JavaScript into a trusted website so that other users' browsers execute it. What type of attack is this?",
+    "options": [
+      "XML injection",
+      "Cross-site scripting",
+      "SQL injection",
+      "Privilege escalation"
+    ],
+    "answer": 1,
+    "explanation": "Cross-site scripting (XSS) occurs when malicious scripts are injected into content that is later viewed by other users. The browser executes the script in the context of the trusted site."
+  },
+  {
+    "id": 50,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Account Attacks",
+    "question": "An attacker uses username and password pairs leaked from another website to try logging into a company's VPN portal. What is this technique called?",
+    "options": [
+      "Password spraying",
+      "Credential stuffing",
+      "Downgrade attack",
+      "Typo injection"
+    ],
+    "answer": 1,
+    "explanation": "Credential stuffing uses previously stolen username and password pairs to attempt logins on other services, exploiting the fact that many users reuse passwords across multiple sites."
+  },
+  {
+    "id": 51,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "Which authentication factor does a one-time password generated by an authenticator app represent?",
+    "options": [
+      "Something you know",
+      "Something you have",
+      "Something you are",
+      "Somewhere you are"
+    ],
+    "answer": 1,
+    "explanation": "An authenticator app or hardware token is treated as something you have because the code is generated by a registered device in the user's possession."
+  },
+  {
+    "id": 52,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "Which technology allows applications to request limited access to a user's account without sharing the user's password?",
+    "options": [
+      "OAuth",
+      "LDAP",
+      "RADIUS",
+      "Kerberos"
+    ],
+    "answer": 0,
+    "explanation": "OAuth is an authorization framework that lets a user grant a third-party app scoped access using tokens instead of disclosing the account password."
+  },
+  {
+    "id": 53,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "Which protocol uses tickets to provide mutual authentication in many Active Directory environments?",
+    "options": [
+      "TACACS+",
+      "Kerberos",
+      "PAP",
+      "CHAP"
+    ],
+    "answer": 1,
+    "explanation": "Kerberos uses tickets issued by a Key Distribution Center to authenticate users and services without repeatedly sending passwords across the network."
+  },
+  {
+    "id": 54,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authentication",
+    "question": "A company wants administrators to use one account for email and a separate account for privileged tasks. Which principle is being enforced?",
+    "options": [
+      "Separation of duties",
+      "Least privilege",
+      "Account disablement",
+      "Federation"
+    ],
+    "answer": 1,
+    "explanation": "Using separate admin and standard accounts helps enforce least privilege by ensuring elevated rights are used only when required."
+  },
+  {
+    "id": 55,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 4 – Authorization",
+    "question": "Which access control model makes decisions based on user role, department, device type, and time of day?",
+    "options": [
+      "DAC",
+      "MAC",
+      "ABAC",
+      "Rule-based only"
+    ],
+    "answer": 2,
+    "explanation": "Attribute-Based Access Control evaluates multiple attributes such as role, location, device posture, and time to make dynamic authorization decisions."
+  },
+  {
+    "id": 56,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which network design BEST limits east-west traffic between departments that do not need to communicate?",
+    "options": [
+      "Network segmentation",
+      "Load balancing",
+      "Port forwarding",
+      "QoS tagging"
+    ],
+    "answer": 0,
+    "explanation": "Segmentation divides the network into smaller zones so lateral movement is reduced and unnecessary communication paths can be blocked."
+  },
+  {
+    "id": 57,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which technology can automatically assess a device's security posture before allowing it onto the network?",
+    "options": [
+      "NAC",
+      "SIEM",
+      "DLP",
+      "SAN"
+    ],
+    "answer": 0,
+    "explanation": "Network Access Control validates posture such as patch level, antivirus state, or certificate status before granting network access."
+  },
+  {
+    "id": 58,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 6 – Secure Protocols",
+    "question": "Which protocol provides secure remote command-line administration over an encrypted connection?",
+    "options": [
+      "Telnet",
+      "SSH",
+      "FTP",
+      "SNMPv1"
+    ],
+    "answer": 1,
+    "explanation": "SSH encrypts remote administrative sessions and is the secure replacement for plaintext protocols such as Telnet."
+  },
+  {
+    "id": 59,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 6 – Secure Protocols",
+    "question": "Which protocol is the secure replacement for HTTP when protecting data in transit between a browser and a web server?",
+    "options": [
+      "HTTPS",
+      "SFTP",
+      "LDAPS",
+      "SMTPS"
+    ],
+    "answer": 0,
+    "explanation": "HTTPS uses TLS to encrypt web traffic and protect the confidentiality and integrity of browser-to-server communications."
+  },
+  {
+    "id": 60,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 6 – Secure Protocols",
+    "question": "Which email protocol is commonly secured with TLS and used by clients to retrieve mail while leaving messages on the server by default?",
+    "options": [
+      "POP3",
+      "IMAP",
+      "TFTP",
+      "RDP"
+    ],
+    "answer": 1,
+    "explanation": "IMAP is commonly used for server-side mailbox synchronization, and it is often protected in transit with TLS."
+  },
+  {
+    "id": 61,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 6 – Secure Protocols",
+    "question": "Which protocol should be disabled because it sends authentication credentials in cleartext during remote administration?",
+    "options": [
+      "SSH",
+      "HTTPS",
+      "Telnet",
+      "SFTP"
+    ],
+    "answer": 2,
+    "explanation": "Telnet does not encrypt sessions, so usernames, passwords, and commands can be intercepted by anyone monitoring the connection."
+  },
+  {
+    "id": 62,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 6 – Secure Protocols",
+    "question": "Which protocol secures directory queries for enterprise identity stores such as Active Directory?",
+    "options": [
+      "LDAPS",
+      "TFTP",
+      "NTP",
+      "Syslog"
+    ],
+    "answer": 0,
+    "explanation": "LDAPS protects LDAP directory traffic with TLS so credentials and directory queries are not sent in plaintext."
+  },
+  {
+    "id": 63,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which device is specifically designed to filter web application traffic and block attacks such as SQL injection and cross-site scripting?",
+    "options": [
+      "Layer 2 switch",
+      "Web application firewall",
+      "Load balancer",
+      "Hub"
+    ],
+    "answer": 1,
+    "explanation": "A web application firewall inspects HTTP/S traffic and applies rules tailored to application-layer threats."
+  },
+  {
+    "id": 64,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which security solution combines WAN connectivity with centralized security inspection for branch offices and remote users?",
+    "options": [
+      "SASE",
+      "VLAN",
+      "SAN",
+      "PKI"
+    ],
+    "answer": 0,
+    "explanation": "Secure Access Service Edge combines networking and security functions, often delivered from the cloud, for distributed users and sites."
+  },
+  {
+    "id": 65,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which firewall rule ordering practice is MOST secure?",
+    "options": [
+      "Place the most permissive rules first",
+      "Use an implicit deny at the end",
+      "Allow all outbound by default without review",
+      "Disable logging for denied packets"
+    ],
+    "answer": 1,
+    "explanation": "An implicit deny blocks traffic that does not match an explicit allow rule, reducing the chance that unauthorized traffic slips through."
+  },
+  {
+    "id": 66,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which security solution passively monitors network traffic and raises alerts but does not sit inline to block packets?",
+    "options": [
+      "IDS",
+      "IPS",
+      "WAF",
+      "Proxy"
+    ],
+    "answer": 0,
+    "explanation": "An intrusion detection system monitors traffic and generates alerts. Unlike an IPS, it does not usually block traffic inline."
+  },
+  {
+    "id": 67,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which security device is deployed inline so it can automatically block malicious traffic?",
+    "options": [
+      "IDS",
+      "IPS",
+      "Syslog collector",
+      "Packet sniffer only"
+    ],
+    "answer": 1,
+    "explanation": "An intrusion prevention system sits inline with traffic and can take action such as dropping packets or resetting sessions."
+  },
+  {
+    "id": 68,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which wireless security configuration is MOST secure for modern enterprise deployments?",
+    "options": [
+      "WEP",
+      "WPA2-TKIP",
+      "WPA3",
+      "Open network"
+    ],
+    "answer": 2,
+    "explanation": "WPA3 is the most secure modern wireless encryption and authentication standard among these choices."
+  },
+  {
+    "id": 69,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which switch feature helps prevent MAC flooding attacks by limiting how many MAC addresses are learned on a port?",
+    "options": [
+      "Port security",
+      "DNSSEC",
+      "NAT",
+      "ARP cache timeout"
+    ],
+    "answer": 0,
+    "explanation": "Port security can restrict the number of MAC addresses learned on a switch port and take action if the limit is exceeded."
+  },
+  {
+    "id": 70,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which switch configuration helps prevent loops by placing redundant paths into a blocking state until needed?",
+    "options": [
+      "Port mirroring",
+      "Spanning Tree Protocol",
+      "NAT traversal",
+      "NetFlow"
+    ],
+    "answer": 1,
+    "explanation": "Spanning Tree Protocol prevents switching loops by selectively blocking redundant links until they are required."
+  },
+  {
+    "id": 71,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 7 – Network Security",
+    "question": "Which wireless feature prevents guests connected to the same SSID from communicating directly with each other?",
+    "options": [
+      "Client isolation",
+      "SSID broadcast",
+      "Band steering",
+      "Channel bonding"
+    ],
+    "answer": 0,
+    "explanation": "Client isolation stops peer-to-peer communication between clients on the same wireless network, reducing lateral attacks."
+  },
+  {
+    "id": 72,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "Which cryptographic concept ensures that encrypting the same plaintext more than once does not always produce identical ciphertext?",
+    "options": [
+      "Initialization vector / nonce usage",
+      "Key escrow",
+      "Hash collision",
+      "Non-repudiation"
+    ],
+    "answer": 0,
+    "explanation": "An IV or nonce introduces randomness so repeated encryption of the same plaintext under the same key does not yield identical ciphertext."
+  },
+  {
+    "id": 73,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "Which hashing algorithm is generally preferred today over SHA-1 for integrity verification?",
+    "options": [
+      "MD5",
+      "SHA-256",
+      "RC4",
+      "DES"
+    ],
+    "answer": 1,
+    "explanation": "SHA-256 is part of the stronger SHA-2 family and is preferred over older algorithms like SHA-1 and MD5."
+  },
+  {
+    "id": 74,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Cryptographic Algorithms",
+    "question": "Why are salts added before storing password hashes?",
+    "options": [
+      "To speed up authentication",
+      "To ensure identical passwords do not produce identical hashes",
+      "To make passwords reversible",
+      "To replace encryption in transit"
+    ],
+    "answer": 1,
+    "explanation": "Salts make each stored password hash unique, which reduces the usefulness of rainbow tables and prevents matching identical passwords across users."
+  },
+  {
+    "id": 75,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Public Key Infrastructure",
+    "question": "Which PKI role typically validates identity information for a CA but does not actually sign certificates?",
+    "options": [
+      "Registration Authority",
+      "Intermediate CA",
+      "CRL distribution point",
+      "Root store"
+    ],
+    "answer": 0,
+    "explanation": "A Registration Authority performs identity vetting tasks on behalf of the CA but does not sign certificates itself."
+  },
+  {
+    "id": 76,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Public Key Infrastructure",
+    "question": "Which mechanism lets a client check certificate revocation status in near real time?",
+    "options": [
+      "OCSP",
+      "CSR",
+      "AES",
+      "DNSSEC"
+    ],
+    "answer": 0,
+    "explanation": "Online Certificate Status Protocol enables clients to query certificate status in near real time instead of relying only on downloaded CRLs."
+  },
+  {
+    "id": 77,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Public Key Infrastructure",
+    "question": "What is a key drawback of a self-signed certificate in production?",
+    "options": [
+      "It has no public key",
+      "It lacks third-party trust validation",
+      "It cannot expire",
+      "It cannot encrypt traffic"
+    ],
+    "answer": 1,
+    "explanation": "A self-signed certificate is not automatically trusted by clients because it is not validated by a recognized certificate authority."
+  },
+  {
+    "id": 78,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Data Protection",
+    "question": "Which data classification label usually requires the strictest access and handling controls?",
+    "options": [
+      "Public",
+      "Internal use",
+      "Confidential",
+      "Highly restricted / top secret"
+    ],
+    "answer": 3,
+    "explanation": "The highest sensitivity classification requires the strongest controls for storage, transmission, and access."
+  },
+  {
+    "id": 79,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Data Protection",
+    "question": "Which practice BEST supports data minimization?",
+    "options": [
+      "Collect only what is necessary for the business purpose",
+      "Retain all customer data indefinitely",
+      "Duplicate production data to every team",
+      "Disable retention schedules"
+    ],
+    "answer": 0,
+    "explanation": "Data minimization means collecting and retaining only the data needed for a legitimate purpose, which reduces risk and compliance burden."
+  },
+  {
+    "id": 80,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 3 – Data Protection",
+    "question": "Which method protects data confidentiality by making stored information unreadable without the proper key?",
+    "options": [
+      "Compression",
+      "Encryption",
+      "Token expiration",
+      "Hashing only"
+    ],
+    "answer": 1,
+    "explanation": "Encryption transforms readable data into ciphertext that can only be reversed with the appropriate key."
+  },
+  {
+    "id": 81,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which backup type contains all changes since the last full backup?",
+    "options": [
+      "Differential",
+      "Incremental",
+      "Snapshot only",
+      "Synthetic full"
+    ],
+    "answer": 0,
+    "explanation": "A differential backup includes everything changed since the last full backup."
+  },
+  {
+    "id": 82,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which backup type contains only the data changed since the most recent backup of any type?",
+    "options": [
+      "Differential",
+      "Incremental",
+      "Full",
+      "Offline archive"
+    ],
+    "answer": 1,
+    "explanation": "Incremental backups capture only changes since the last backup, reducing backup size but making restores more complex."
+  },
+  {
+    "id": 83,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which backup strategy BEST improves resilience against ransomware encrypting backup data?",
+    "options": [
+      "Keep backups continuously mounted and writable",
+      "Use offline or immutable backups",
+      "Store backups on the same endpoint",
+      "Use the same admin account everywhere"
+    ],
+    "answer": 1,
+    "explanation": "Offline or immutable backups reduce the chance that ransomware can tamper with or encrypt backup data."
+  },
+  {
+    "id": 84,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which alternate site type can usually take over operations the fastest because equipment and systems are already running?",
+    "options": [
+      "Cold site",
+      "Warm site",
+      "Hot site",
+      "Empty office space"
+    ],
+    "answer": 2,
+    "explanation": "A hot site is fully equipped and operational, so failover can occur quickly."
+  },
+  {
+    "id": 85,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 5 – Resilience and Recovery",
+    "question": "Which metric measures the average time required to repair a failed system?",
+    "options": [
+      "MTTR",
+      "RPO",
+      "RTO",
+      "ALE"
+    ],
+    "answer": 0,
+    "explanation": "Mean Time To Repair tracks how long it typically takes to restore a failed system or component."
+  },
+  {
+    "id": 86,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which governance document provides high-level management direction and expectations for security?",
+    "options": [
+      "Procedure",
+      "Policy",
+      "Checklist",
+      "Troubleshooting guide"
+    ],
+    "answer": 1,
+    "explanation": "A policy is a high-level statement of management intent and organizational direction."
+  },
+  {
+    "id": 87,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which document defines mandatory technical requirements such as password length or approved cipher suites?",
+    "options": [
+      "Guideline",
+      "Standard",
+      "Whitepaper",
+      "Memo"
+    ],
+    "answer": 1,
+    "explanation": "A standard contains specific mandatory requirements that support policy implementation."
+  },
+  {
+    "id": 88,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which type of document provides step-by-step instructions for completing a repeatable security task?",
+    "options": [
+      "Procedure",
+      "Policy",
+      "Risk register",
+      "BIA"
+    ],
+    "answer": 0,
+    "explanation": "Procedures provide detailed instructions for performing a specific task consistently."
+  },
+  {
+    "id": 89,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which term describes the amount of risk an organization is willing to accept to achieve its objectives?",
+    "options": [
+      "Risk appetite",
+      "Residual risk",
+      "Risk transference",
+      "Inherent risk only"
+    ],
+    "answer": 0,
+    "explanation": "Risk appetite expresses how much risk the organization is willing to tolerate based on business priorities."
+  },
+  {
+    "id": 90,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Purchasing cyber insurance is an example of which risk treatment strategy?",
+    "options": [
+      "Avoidance",
+      "Mitigation",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 2,
+    "explanation": "Insurance transfers some financial impact of risk to a third party."
+  },
+  {
+    "id": 91,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Implementing a new security control to reduce the likelihood of attack is an example of which risk response?",
+    "options": [
+      "Mitigation",
+      "Acceptance",
+      "Transference",
+      "Avoidance"
+    ],
+    "answer": 0,
+    "explanation": "Risk mitigation reduces either the probability or the impact of a risk through additional controls or safeguards."
+  },
+  {
+    "id": 92,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Discontinuing a high-risk internet-facing service rather than securing it further is an example of: ",
+    "options": [
+      "Risk avoidance",
+      "Risk mitigation",
+      "Risk acceptance",
+      "Risk transference"
+    ],
+    "answer": 0,
+    "explanation": "Risk avoidance removes the risky activity entirely."
+  },
+  {
+    "id": 93,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which agreement usually documents uptime targets and other measurable service commitments from a provider?",
+    "options": [
+      "SLA",
+      "MOU",
+      "NDA",
+      "BIA"
+    ],
+    "answer": 0,
+    "explanation": "A Service Level Agreement defines measurable service expectations between parties."
+  },
+  {
+    "id": 94,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which analysis identifies critical functions and the impact of downtime or data loss to the business?",
+    "options": [
+      "Business impact analysis",
+      "Port scan",
+      "Hash verification",
+      "Fuzz testing"
+    ],
+    "answer": 0,
+    "explanation": "A BIA identifies key processes, dependencies, and the consequences of disruption."
+  },
+  {
+    "id": 95,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Vulnerability Management",
+    "question": "Which activity provides broad automated coverage of systems but may require manual validation because of false positives?",
+    "options": [
+      "Vulnerability scanning",
+      "Penetration testing",
+      "Forensic analysis",
+      "Threat intelligence sharing"
+    ],
+    "answer": 0,
+    "explanation": "Vulnerability scanners are useful for recurring broad coverage, but findings often need validation."
+  },
+  {
+    "id": 96,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Vulnerability Management",
+    "question": "Which testing approach assumes no prior internal knowledge of the target environment?",
+    "options": [
+      "Black-box",
+      "Gray-box",
+      "White-box",
+      "Authenticated only"
+    ],
+    "answer": 0,
+    "explanation": "Black-box testing simulates an attacker with little or no insider knowledge of the environment."
+  },
+  {
+    "id": 97,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Vulnerability Management",
+    "question": "Which testing approach includes full knowledge such as source code, architecture diagrams, and credentials?",
+    "options": [
+      "Black-box",
+      "Gray-box",
+      "White-box",
+      "External only"
+    ],
+    "answer": 2,
+    "explanation": "White-box testing provides complete internal knowledge and can enable deeper assessment coverage."
+  },
+  {
+    "id": 98,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Vulnerability Management",
+    "question": "After a vulnerability is fixed, which activity confirms the remediation was successful?",
+    "options": [
+      "Rescanning or retesting",
+      "Escalation",
+      "Attribution",
+      "Log rotation"
+    ],
+    "answer": 0,
+    "explanation": "Rescanning or retesting verifies that the vulnerability has been successfully remediated."
+  },
+  {
+    "id": 99,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Vulnerability Management",
+    "question": "Which standardized scoring system is commonly used to rate vulnerability severity?",
+    "options": [
+      "CVSS",
+      "RTO",
+      "AES",
+      "MTBF"
+    ],
+    "answer": 0,
+    "explanation": "CVSS provides a standard method for scoring the severity of vulnerabilities."
+  },
+  {
+    "id": 100,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "A malicious website causes a user's browser to submit an unwanted request to another site where the user is already authenticated. What attack is this?",
+    "options": [
+      "CSRF",
+      "XSS",
+      "SQL injection",
+      "DLL hijacking"
+    ],
+    "answer": 0,
+    "explanation": "Cross-site request forgery abuses the victim's existing authenticated session to trigger unwanted actions."
+  },
+  {
+    "id": 101,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "Which vulnerability occurs when a user modifies hidden fields, cookies, or URL parameters to change application behavior?",
+    "options": [
+      "Input tampering",
+      "Bluejacking",
+      "Jamming",
+      "Typosquatting"
+    ],
+    "answer": 0,
+    "explanation": "Input tampering involves manipulating client-side values to affect how the application processes requests."
+  },
+  {
+    "id": 102,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "A web application exposes a reference like /record?id=1001, and an attacker changes it to access another user's data. What is this called?",
+    "options": [
+      "Insecure direct object reference",
+      "Race condition",
+      "ARP spoofing",
+      "Shimming"
+    ],
+    "answer": 0,
+    "explanation": "IDOR vulnerabilities occur when object references are exposed without proper authorization checks."
+  },
+  {
+    "id": 103,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "A server accepts uploaded files into a web-accessible directory, allowing an attacker to upload a script and execute it. Which vulnerability is involved?",
+    "options": [
+      "Unrestricted file upload",
+      "Password spraying",
+      "Evil twin",
+      "Replay"
+    ],
+    "answer": 0,
+    "explanation": "Unrestricted file upload can allow attackers to place executable content on a server and run arbitrary code."
+  },
+  {
+    "id": 104,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Application Attacks",
+    "question": "Which attack attempts to exploit a program by sending more data than a memory buffer can hold?",
+    "options": [
+      "Buffer overflow",
+      "Replay",
+      "Watering hole",
+      "Tokenization abuse"
+    ],
+    "answer": 0,
+    "explanation": "A buffer overflow can overwrite adjacent memory and potentially allow code execution or cause crashes."
+  },
+  {
+    "id": 105,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Network Attacks",
+    "question": "Which attack overwhelms a target using many distributed systems at once?",
+    "options": [
+      "DDoS",
+      "Replay",
+      "Directory traversal",
+      "Pivoting"
+    ],
+    "answer": 0,
+    "explanation": "A distributed denial-of-service attack uses many compromised systems to flood a target with traffic or requests."
+  },
+  {
+    "id": 106,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Network Attacks",
+    "question": "An attacker captures a valid authentication exchange and reuses it later. What kind of attack is this?",
+    "options": [
+      "Replay attack",
+      "Pharming",
+      "Bluebugging",
+      "Whaling"
+    ],
+    "answer": 0,
+    "explanation": "Replay attacks reuse captured legitimate traffic to attempt unauthorized access."
+  },
+  {
+    "id": 107,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Network Attacks",
+    "question": "Which local network attack sends forged ARP messages to redirect traffic through the attacker's machine?",
+    "options": [
+      "ARP poisoning",
+      "DNSSEC",
+      "MAC filtering",
+      "Sandbox escape"
+    ],
+    "answer": 0,
+    "explanation": "ARP poisoning manipulates local network address resolution to intercept or reroute traffic."
+  },
+  {
+    "id": 108,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Wireless Attacks",
+    "question": "Which wireless attack disrupts communications by flooding the radio frequency with interference?",
+    "options": [
+      "Jamming",
+      "Wardriving",
+      "Bluesnarfing",
+      "Typosquatting"
+    ],
+    "answer": 0,
+    "explanation": "Jamming prevents legitimate wireless signals from being transmitted or received reliably."
+  },
+  {
+    "id": 109,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Wireless Attacks",
+    "question": "Which activity involves traveling around an area looking for discoverable wireless networks?",
+    "options": [
+      "Wardriving",
+      "Tailgating",
+      "Dumpster diving",
+      "Shoulder surfing"
+    ],
+    "answer": 0,
+    "explanation": "Wardriving is the practice of discovering and mapping wireless networks while moving through an area."
+  },
+  {
+    "id": 110,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Malware",
+    "question": "Which malware type is designed to hide processes, files, or other malicious artifacts from the operating system and tools?",
+    "options": [
+      "Rootkit",
+      "Adware",
+      "Ransomware",
+      "Spyware"
+    ],
+    "answer": 0,
+    "explanation": "Rootkits are designed to hide malicious activity and maintain stealthy persistence."
+  },
+  {
+    "id": 111,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Malware",
+    "question": "Which malware type can spread across systems without a user having to run an infected file manually?",
+    "options": [
+      "Worm",
+      "Trojan",
+      "Logic bomb",
+      "Keylogger"
+    ],
+    "answer": 0,
+    "explanation": "A worm self-replicates and spreads automatically across systems or networks."
+  },
+  {
+    "id": 112,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Malware",
+    "question": "Which malware disguises itself as legitimate software to trick a user into installing it?",
+    "options": [
+      "Trojan",
+      "Worm",
+      "Rootkit",
+      "IDS"
+    ],
+    "answer": 0,
+    "explanation": "A Trojan appears useful or legitimate but contains malicious functionality."
+  },
+  {
+    "id": 113,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Malware",
+    "question": "Which malicious tool records keystrokes to steal passwords and other sensitive data?",
+    "options": [
+      "Keylogger",
+      "Sandbox",
+      "RA",
+      "Hypervisor"
+    ],
+    "answer": 0,
+    "explanation": "A keylogger records keyboard input and is often used to steal credentials or confidential data."
+  },
+  {
+    "id": 114,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Malware",
+    "question": "A compromised device that is remotely controlled as part of a coordinated malicious network has become part of a: ",
+    "options": [
+      "Botnet",
+      "Certificate chain",
+      "Warm site",
+      "Change board"
+    ],
+    "answer": 0,
+    "explanation": "A botnet is a collection of compromised devices under remote attacker control."
+  },
+  {
+    "id": 115,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "Following an authorized employee through a secure entrance without badging in is called: ",
+    "options": [
+      "Tailgating",
+      "Whaling",
+      "Vishing",
+      "Shimming"
+    ],
+    "answer": 0,
+    "explanation": "Tailgating is a physical social engineering tactic where an unauthorized person follows an authorized one into a restricted area."
+  },
+  {
+    "id": 116,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "Watching a user type a password from nearby is known as: ",
+    "options": [
+      "Shoulder surfing",
+      "Pretexting",
+      "Brand impersonation",
+      "Enumeration"
+    ],
+    "answer": 0,
+    "explanation": "Shoulder surfing involves directly observing a victim enter credentials or other sensitive data."
+  },
+  {
+    "id": 117,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "Searching discarded materials for sensitive information is known as: ",
+    "options": [
+      "Dumpster diving",
+      "Wardriving",
+      "Jamming",
+      "Pivoting"
+    ],
+    "answer": 0,
+    "explanation": "Dumpster diving recovers sensitive information from discarded media or documents."
+  },
+  {
+    "id": 118,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "An attacker leaves infected USB drives labeled 'Executive Bonuses' in a parking lot. Which principle is MOST directly exploited?",
+    "options": [
+      "Curiosity",
+      "Scarcity",
+      "Consensus",
+      "Authority"
+    ],
+    "answer": 0,
+    "explanation": "Baiting commonly exploits curiosity or greed by making the victim want to interact with the malicious object."
+  },
+  {
+    "id": 119,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Social Engineering",
+    "question": "An attacker impersonates an executive and urgently requests a wire transfer from accounting. What is this attack BEST called?",
+    "options": [
+      "Business email compromise",
+      "Wardriving",
+      "Bluejacking",
+      "DNS tunneling"
+    ],
+    "answer": 0,
+    "explanation": "Business email compromise uses impersonation and urgency to trick victims into transferring money or releasing sensitive information."
+  },
+  {
+    "id": 120,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Supply Chain and Third-Party Risk",
+    "question": "Which action BEST reduces the risk of installing a tampered software package from a vendor?",
+    "options": [
+      "Verify digital signatures and checksums",
+      "Allow any mirror source",
+      "Disable all patching",
+      "Use email attachments as the normal source"
+    ],
+    "answer": 0,
+    "explanation": "Validating signatures and checksums helps confirm software authenticity and integrity before installation."
+  },
+  {
+    "id": 121,
+    "domain": "Threats, Vulnerabilities & Mitigations",
+    "lesson": "Lesson 2 – Supply Chain and Third-Party Risk",
+    "question": "Which document should define required security controls and reporting obligations for a third-party cloud provider?",
+    "options": [
+      "Contract or SLA security requirements",
+      "Welcome packet",
+      "Password history file",
+      "Patch note only"
+    ],
+    "answer": 0,
+    "explanation": "Security requirements should be defined contractually so the vendor is accountable for them."
+  },
+  {
+    "id": 122,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which hardening step MOST directly reduces attack surface on a newly deployed server?",
+    "options": [
+      "Disable unnecessary services",
+      "Add more user accounts",
+      "Install games",
+      "Allow all inbound ports"
+    ],
+    "answer": 0,
+    "explanation": "Disabling unnecessary services reduces the number of exposed processes and entry points an attacker can target."
+  },
+  {
+    "id": 123,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which boot protection feature helps ensure only trusted signed components load during startup?",
+    "options": [
+      "Secure Boot",
+      "DHCP snooping",
+      "NAT",
+      "ARP cache inspection"
+    ],
+    "answer": 0,
+    "explanation": "Secure Boot validates boot components so untrusted or unsigned code does not run during startup."
+  },
+  {
+    "id": 124,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which technique runs risky code in an isolated environment so its behavior can be observed safely?",
+    "options": [
+      "Sandboxing",
+      "Tailgating",
+      "Load balancing",
+      "Tokenization"
+    ],
+    "answer": 0,
+    "explanation": "Sandboxing isolates code execution to reduce damage and allow analysis."
+  },
+  {
+    "id": 125,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which control MOST directly ensures only approved applications can execute on a workstation?",
+    "options": [
+      "Application allowlisting",
+      "Password aging",
+      "Guest Wi-Fi",
+      "Port forwarding"
+    ],
+    "answer": 0,
+    "explanation": "Application allowlisting blocks unapproved software from running by default."
+  },
+  {
+    "id": 126,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "What term describes the approved secure configuration that systems should be deployed and audited against?",
+    "options": [
+      "Baseline",
+      "Threat feed",
+      "Certificate pinning",
+      "Pivot table"
+    ],
+    "answer": 0,
+    "explanation": "A security baseline defines the approved starting configuration standard for systems."
+  },
+  {
+    "id": 127,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which cloud service model provides virtual machines, storage, and networking while the customer manages the operating systems and applications?",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "VDI"
+    ],
+    "answer": 0,
+    "explanation": "Infrastructure as a Service provides foundational compute resources while the customer manages workloads running on them."
+  },
+  {
+    "id": 128,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which cloud service model gives developers a managed runtime platform without requiring them to manage the underlying operating system?",
+    "options": [
+      "PaaS",
+      "IaaS",
+      "SaaS",
+      "Colocation"
+    ],
+    "answer": 0,
+    "explanation": "Platform as a Service provides a managed development and hosting environment so developers can focus on building applications."
+  },
+  {
+    "id": 129,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which cloud model delivers a finished application to end users over the internet?",
+    "options": [
+      "SaaS",
+      "PaaS",
+      "IaaS",
+      "Hybrid RAID"
+    ],
+    "answer": 0,
+    "explanation": "Software as a Service provides the completed software application as an online service."
+  },
+  {
+    "id": 130,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which concept defines which security responsibilities belong to the cloud provider and which belong to the customer?",
+    "options": [
+      "Shared responsibility model",
+      "Air gap model",
+      "Key stretching",
+      "Zero fill model"
+    ],
+    "answer": 0,
+    "explanation": "The shared responsibility model divides security duties between provider and customer depending on the service model."
+  },
+  {
+    "id": 131,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which environment is MOST appropriate for testing a patch before it is rolled into production?",
+    "options": [
+      "Staging environment",
+      "Production environment",
+      "Public kiosk",
+      "Guest VLAN only"
+    ],
+    "answer": 0,
+    "explanation": "A staging environment is designed for validation before changes are deployed to production."
+  },
+  {
+    "id": 132,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which virtualization threat occurs when code running inside a guest breaks isolation and interacts with the host?",
+    "options": [
+      "VM escape",
+      "Overfitting",
+      "Port mirroring",
+      "SPF failure"
+    ],
+    "answer": 0,
+    "explanation": "VM escape is a serious threat in which a guest VM compromises virtualization boundaries."
+  },
+  {
+    "id": 133,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 10 – Cloud and Virtualization Security",
+    "question": "Which solution hosts user desktops centrally and delivers them remotely to client devices?",
+    "options": [
+      "VDI",
+      "RAID",
+      "SASE",
+      "SAN"
+    ],
+    "answer": 0,
+    "explanation": "Virtual Desktop Infrastructure centralizes desktop hosting and provides remote access to those desktops."
+  },
+  {
+    "id": 134,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 11 – Monitoring and Operations",
+    "question": "Which security operations activity proactively looks for indicators of compromise that automated tools may have missed?",
+    "options": [
+      "Threat hunting",
+      "Tokenization",
+      "Failover clustering",
+      "Bluejacking"
+    ],
+    "answer": 0,
+    "explanation": "Threat hunting is a proactive search for malicious activity, attacker behavior, or indicators of compromise."
+  },
+  {
+    "id": 135,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 11 – Monitoring and Operations",
+    "question": "Which log source would MOST directly show a spike in denied inbound traffic at the perimeter?",
+    "options": [
+      "Firewall logs",
+      "Badge logs",
+      "HR records",
+      "Printer logs"
+    ],
+    "answer": 0,
+    "explanation": "Firewall logs record allowed and denied traffic and are key for analyzing blocked inbound connections."
+  },
+  {
+    "id": 136,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 11 – Monitoring and Operations",
+    "question": "Which type of log MOST directly shows successful and failed user logins to a server?",
+    "options": [
+      "Authentication or security log",
+      "Temperature log",
+      "Printer queue",
+      "Routing table"
+    ],
+    "answer": 0,
+    "explanation": "Authentication and security logs track login events and account access attempts."
+  },
+  {
+    "id": 137,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 11 – Monitoring and Operations",
+    "question": "What is the PRIMARY benefit of centralized log aggregation?",
+    "options": [
+      "Improved visibility and correlation across many systems",
+      "Guaranteed prevention of attacks",
+      "Elimination of backups",
+      "Removal of all false positives"
+    ],
+    "answer": 0,
+    "explanation": "Centralized logging improves search, visibility, and cross-system event correlation during detection and investigation."
+  },
+  {
+    "id": 138,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "Which incident response phase includes developing playbooks, assigning roles, and ensuring tools are ready before an event occurs?",
+    "options": [
+      "Preparation",
+      "Containment",
+      "Eradication",
+      "Recovery"
+    ],
+    "answer": 0,
+    "explanation": "Preparation includes planning, training, documentation, and readiness activities before an incident happens."
+  },
+  {
+    "id": 139,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "Which phase of incident response is focused on stopping the spread and limiting immediate damage?",
+    "options": [
+      "Containment",
+      "Lessons learned",
+      "Preparation",
+      "Attribution"
+    ],
+    "answer": 0,
+    "explanation": "Containment isolates affected systems or accounts to limit the impact of an active incident."
+  },
+  {
+    "id": 140,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "Which phase includes removing malware, disabling persistence mechanisms, and closing exploited vulnerabilities?",
+    "options": [
+      "Eradication",
+      "Detection only",
+      "Governance",
+      "Classification"
+    ],
+    "answer": 0,
+    "explanation": "Eradication removes the attacker's foothold and the root cause after containment."
+  },
+  {
+    "id": 141,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "Which incident response phase focuses on restoring systems to normal operation and monitoring them for recurrence?",
+    "options": [
+      "Recovery",
+      "Preparation",
+      "Enumeration",
+      "Asset tagging"
+    ],
+    "answer": 0,
+    "explanation": "Recovery returns systems to production and validates that they are safe and stable."
+  },
+  {
+    "id": 142,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "Which activity should take place after an incident to identify improvements to processes, tools, and controls?",
+    "options": [
+      "Lessons learned review",
+      "Delete all evidence",
+      "Disable monitoring",
+      "Ignore minor events"
+    ],
+    "answer": 0,
+    "explanation": "Lessons learned reviews help improve future response and strengthen controls."
+  },
+  {
+    "id": 143,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "Why is chain of custody important for digital evidence?",
+    "options": [
+      "It documents who handled the evidence and preserves integrity",
+      "It automatically encrypts files",
+      "It accelerates patching",
+      "It reduces storage needs"
+    ],
+    "answer": 0,
+    "explanation": "Chain of custody records how evidence was collected, handled, and transferred so integrity and admissibility can be defended."
+  },
+  {
+    "id": 144,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 12 – Incident Response",
+    "question": "What is the BEST immediate action when ransomware is actively spreading between systems?",
+    "options": [
+      "Isolate affected systems from the network",
+      "Rebuild everything instantly",
+      "Delete all logs",
+      "Publicly disclose before validating scope"
+    ],
+    "answer": 0,
+    "explanation": "Immediate isolation helps contain the spread and preserves options for investigation and recovery."
+  },
+  {
+    "id": 145,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 13 – Physical Security",
+    "question": "Which physical security control is designed to allow only one person at a time through a controlled entry area?",
+    "options": [
+      "Mantrap",
+      "Bollard",
+      "Fence",
+      "Visitor badge"
+    ],
+    "answer": 0,
+    "explanation": "A mantrap uses controlled doors to reduce piggybacking and unauthorized entry."
+  },
+  {
+    "id": 146,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 13 – Physical Security",
+    "question": "Which physical control is mainly intended to stop vehicles from reaching a building entrance?",
+    "options": [
+      "Bollards",
+      "Turnstiles",
+      "Badge readers",
+      "Motion sensors"
+    ],
+    "answer": 0,
+    "explanation": "Bollards are sturdy barriers used to block or slow vehicles near entrances."
+  },
+  {
+    "id": 147,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 13 – Physical Security",
+    "question": "Which fire suppression choice is generally better suited for server rooms than standard water sprinklers?",
+    "options": [
+      "Clean agent fire suppression",
+      "Open water deluge",
+      "Foam for fuel fires only",
+      "No suppression at all"
+    ],
+    "answer": 0,
+    "explanation": "Clean agent systems help suppress fire while reducing water-related damage to electronic equipment."
+  },
+  {
+    "id": 148,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 13 – Physical Security",
+    "question": "Which environmental sensor would most directly help identify overheating in a server room?",
+    "options": [
+      "Temperature sensor",
+      "Badge reader",
+      "Deadbolt",
+      "Privacy screen"
+    ],
+    "answer": 0,
+    "explanation": "Temperature monitoring helps detect cooling failures and dangerous heat buildup."
+  },
+  {
+    "id": 149,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 13 – Physical Security",
+    "question": "Which device provides temporary battery-backed power during short outages and gives generators time to start?",
+    "options": [
+      "UPS",
+      "Patch panel",
+      "Load balancer",
+      "Cable tester"
+    ],
+    "answer": 0,
+    "explanation": "An uninterruptible power supply provides short-term power continuity and conditioning during outages."
+  },
+  {
+    "id": 150,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 13 – Physical Security",
+    "question": "Which control BEST reduces the risk of someone nearby reading sensitive information displayed on a laptop?",
+    "options": [
+      "Privacy screen filter",
+      "Cable lock",
+      "UPS",
+      "Biometric lock"
+    ],
+    "answer": 0,
+    "explanation": "A privacy screen narrows the viewing angle so nearby people cannot easily see the display."
+  },
+  {
+    "id": 151,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which principle requires that critical tasks be split so one person cannot complete the entire sensitive process alone?",
+    "options": [
+      "Separation of duties",
+      "Single sign-on",
+      "Tokenization",
+      "Whitelisting"
+    ],
+    "answer": 0,
+    "explanation": "Separation of duties reduces fraud and error by dividing key tasks among multiple people."
+  },
+  {
+    "id": 152,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which training topic MOST directly helps users recognize suspicious links, sender impersonation, and urgent credential requests?",
+    "options": [
+      "Phishing awareness",
+      "RAID setup",
+      "Subnetting only",
+      "Disk imaging"
+    ],
+    "answer": 0,
+    "explanation": "Phishing awareness training teaches users how to spot common social engineering signs."
+  },
+  {
+    "id": 153,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which personnel security control screens candidates before they are granted access to sensitive systems?",
+    "options": [
+      "Background checks",
+      "Port scanning",
+      "Token rotation",
+      "Packet shaping"
+    ],
+    "answer": 0,
+    "explanation": "Background checks help reduce insider risk before granting sensitive access."
+  },
+  {
+    "id": 154,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which personnel policy can help uncover fraud by forcing another employee to perform someone's duties temporarily?",
+    "options": [
+      "Mandatory vacation",
+      "Shadow IT",
+      "BYOD",
+      "Open guest access"
+    ],
+    "answer": 0,
+    "explanation": "Mandatory vacation can expose hidden fraud or misuse when another person must take over the role."
+  },
+  {
+    "id": 155,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 8 – Governance, Risk, and Compliance",
+    "question": "Which process ensures accounts, badges, and other access rights are removed promptly when an employee leaves?",
+    "options": [
+      "Offboarding",
+      "Federation",
+      "Data masking",
+      "Port mirroring"
+    ],
+    "answer": 0,
+    "explanation": "Offboarding removes physical and logical access when personnel change roles or leave the organization."
+  },
+  {
+    "id": 156,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which patch management practice BEST balances risk reduction with operational stability?",
+    "options": [
+      "Deploy all patches to production immediately without testing",
+      "Prioritize, test, approve, and deploy through a controlled process",
+      "Patch only once each year",
+      "Ignore vendor severity ratings"
+    ],
+    "answer": 1,
+    "explanation": "A controlled patching process reduces exposure while lowering the risk of outages from untested updates."
+  },
+  {
+    "id": 157,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which system component stores trusted root certificate authorities used to validate software signatures and TLS certificates?",
+    "options": [
+      "Root trust store",
+      "Swap partition",
+      "Loopback adapter",
+      "DHCP scope"
+    ],
+    "answer": 0,
+    "explanation": "The root trust store contains trusted CA certificates used to validate certificate chains."
+  },
+  {
+    "id": 158,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 9 – Endpoint and Host Security",
+    "question": "Which security control MOST directly detects unauthorized changes to important files or configurations on critical systems?",
+    "options": [
+      "File integrity monitoring",
+      "Warm site",
+      "Token escrow",
+      "Overprovisioning"
+    ],
+    "answer": 0,
+    "explanation": "File integrity monitoring alerts when monitored files or configurations change unexpectedly."
+  },
+  {
+    "id": 159,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which type of account should generally be avoided because it prevents accountability and individual attribution of actions?",
+    "options": [
+      "Federated account",
+      "Shared account",
+      "Service account",
+      "Guest account"
+    ],
+    "answer": 1,
+    "explanation": "Shared accounts make it difficult to determine which individual performed an action, weakening accountability and auditing."
+  },
+  {
+    "id": 160,
+    "domain": "General Security Concepts",
+    "lesson": "Lesson 1 – Security Controls",
+    "question": "Which practice BEST supports secure baseline enforcement on workstations and servers?",
+    "options": [
+      "Allow each user to configure security settings freely",
+      "Use configuration baselines and regular compliance checks",
+      "Disable centralized management",
+      "Rely only on end-user training"
+    ],
+    "answer": 1,
+    "explanation": "Defined security baselines with regular compliance validation help keep systems consistently hardened over time."
+  }
+]

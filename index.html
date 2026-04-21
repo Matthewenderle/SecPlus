@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CompTIA Security+ SY0-701 Practice Test</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 0 0 60px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #app { max-width: 680px; margin: 0 auto; padding: 24px 16px; }
+
+  /* ── TYPOGRAPHY ── */
+  h1 { font-size: 30px; font-weight: bold; color: #f1f5f9; letter-spacing: -0.5px; margin-bottom: 4px; }
+  h2 { font-size: 22px; color: #f1f5f9; margin-bottom: 16px; }
+  h3 { font-size: 15px; color: #cbd5e1; letter-spacing: 0.3px; margin-bottom: 18px; }
+  p  { line-height: 1.6; }
+
+  /* ── BADGE / TAGS ── */
+  .badge {
+    display: inline-block; background: #1e40af; color: #93c5fd;
+    font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold;
+    letter-spacing: 2px; padding: 4px 12px; border-radius: 4px; margin-bottom: 12px;
+  }
+  .subtitle  { font-size: 17px; color: #94a3b8; margin-bottom: 4px; }
+  .subtitle2 { font-size: 13px; color: #64748b; }
+
+  /* ── CARD ── */
+  .card {
+    background: #1e293b; border: 1px solid #334155;
+    border-radius: 12px; padding: 22px; margin-bottom: 18px;
+  }
+
+  /* ── CONFIG PILLS ── */
+  .config-row { margin-bottom: 20px; }
+  .config-label {
+    display: block; font-size: 12px; color: #64748b; margin-bottom: 8px;
+    font-family: 'Courier New', monospace; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    background: #0f172a; border: 1px solid #334155; color: #94a3b8;
+    border-radius: 20px; padding: 6px 14px; font-size: 13px;
+    cursor: pointer; font-family: Georgia, serif; transition: all 0.15s;
+  }
+  .pill.active { background: #1d4ed8; border-color: #3b82f6; color: #bfdbfe; }
+
+  /* ── START BUTTONS ── */
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .btn-start {
+    flex: 1; border: none; color: #fff; border-radius: 10px;
+    padding: 16px 14px; font-size: 15px; font-weight: bold;
+    cursor: pointer; display: flex; flex-direction: column;
+    align-items: center; gap: 4px; min-width: 130px; font-family: Georgia, serif;
+  }
+  .btn-start.primary { background: #1d4ed8; }
+  .btn-start.secondary { background: #164e63; }
+  .btn-sub { font-size: 11px; color: #93c5fd; font-weight: normal; font-family: 'Courier New', monospace; }
+
+  /* ── DOMAIN GRID ── */
+  .domain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .domain-card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px; text-align: center; }
+  .domain-icon { font-size: 24px; margin-bottom: 8px; }
+  .domain-name { font-size: 12px; color: #94a3b8; margin-bottom: 4px; line-height: 1.4; }
+  .domain-count { font-size: 20px; font-weight: bold; color: #e2e8f0; }
+
+  /* ── TOP BAR ── */
+  .top-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .progress-label { font-size: 13px; color: #64748b; white-space: nowrap; font-family: 'Courier New', monospace; }
+  .progress-track { flex: 1; height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #3b82f6; border-radius: 3px; transition: width 0.4s ease; }
+  .timer { font-size: 14px; color: #94a3b8; font-family: 'Courier New', monospace; white-space: nowrap; }
+  .timer.alert { color: #ef4444; font-weight: bold; }
+
+  /* ── QUESTION CARD ── */
+  .domain-tag {
+    display: inline-block; font-size: 11px; font-family: 'Courier New', monospace;
+    padding: 3px 10px; border-radius: 4px; border: 1px solid; margin-bottom: 4px; letter-spacing: 0.5px;
+  }
+  .lesson-tag { display: block; font-size: 12px; color: #475569; margin-bottom: 14px; font-family: 'Courier New', monospace; }
+  .question-text { font-size: 17px; line-height: 1.65; color: #f1f5f9; margin-bottom: 22px; }
+
+  /* ── OPTIONS ── */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    background: #0f172a; border: 1px solid #334155; border-radius: 8px;
+    padding: 13px 14px; text-align: left; cursor: pointer;
+    display: flex; align-items: flex-start; gap: 12px;
+    color: #cbd5e1; font-size: 14px; line-height: 1.5;
+    transition: border-color 0.15s, background 0.15s;
+    width: 100%; font-family: Georgia, serif;
+  }
+  .option:active { opacity: 0.85; }
+  .option.correct { background: #052e16; border-color: #16a34a; color: #bbf7d0; cursor: default; }
+  .option.wrong   { background: #450a0a; border-color: #dc2626; color: #fecaca; cursor: default; }
+  .option.dim     { opacity: 0.38; cursor: default; }
+  .opt-letter {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #334155; color: #94a3b8; border-radius: 4px;
+    min-width: 22px; height: 22px; font-size: 12px; font-weight: bold;
+    flex-shrink: 0; font-family: 'Courier New', monospace;
+  }
+  .opt-text { flex: 1; }
+  .opt-mark { font-weight: bold; font-size: 16px; margin-left: 4px; }
+  .tick { color: #4ade80; }
+  .cross { color: #f87171; }
+
+  /* ── EXPLANATION ── */
+  .explanation { margin-top: 18px; border-radius: 8px; padding: 15px; border: 1px solid; }
+  .explanation.correct-bg { background: #052e16; border-color: #16a34a; color: #d1fae5; }
+  .explanation.wrong-bg   { background: #1c1917; border-color: #78350f; color: #fde68a; }
+  .expl-header { font-weight: bold; margin-bottom: 8px; font-size: 14px; }
+  .expl-text   { font-size: 14px; line-height: 1.7; }
+
+  /* ── NAV ── */
+  .nav-row { display: flex; justify-content: flex-end; margin-top: 18px; }
+  .btn-next {
+    background: #1d4ed8; border: none; color: #fff;
+    border-radius: 8px; padding: 13px 24px; font-size: 15px;
+    font-weight: bold; cursor: pointer; font-family: Georgia, serif;
+  }
+  .btn-quit {
+    background: transparent; border: none; color: #475569;
+    font-size: 13px; cursor: pointer; padding: 10px 0;
+    font-family: Georgia, serif; display: block;
+  }
+
+  /* ── RESULTS ── */
+  .results-hero { text-align: center; margin-bottom: 28px; padding-top: 12px; }
+  .score-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 90px; height: 90px; border-radius: 50%;
+    font-size: 28px; font-weight: bold; color: #fff; margin-bottom: 14px;
+  }
+  .result-title { font-size: 24px; margin-bottom: 6px; color: #f1f5f9; }
+  .result-sub   { color: #94a3b8; font-size: 14px; }
+
+  .domain-row { display: flex; align-items: center; gap: 10px; margin-bottom: 13px; }
+  .domain-row-label { font-size: 12px; color: #94a3b8; width: 200px; flex-shrink: 0; line-height: 1.4; }
+  .domain-row-bar   { flex: 1; height: 8px; background: #0f172a; border-radius: 4px; overflow: hidden; }
+  .domain-row-fill  { height: 100%; border-radius: 4px; }
+  .domain-row-pct   { font-size: 13px; color: #cbd5e1; white-space: nowrap; font-family: 'Courier New', monospace; width: 36px; text-align: right; }
+
+  .review-item { border-bottom: 1px solid #243044; padding-bottom: 12px; margin-bottom: 12px; }
+  .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .review-num    { font-weight: bold; font-size: 14px; font-family: 'Courier New', monospace; }
+  .review-lesson { font-size: 11px; color: #475569; font-family: 'Courier New', monospace; }
+  .review-q      { font-size: 13px; color: #94a3b8; margin-bottom: 5px; line-height: 1.5; }
+  .review-wrong  { font-size: 12px; color: #f87171; font-family: 'Courier New', monospace; display: block; }
+  .review-right  { font-size: 12px; color: #4ade80; font-family: 'Courier New', monospace; display: block; }
+
+  /* ── HEADER ── */
+  .page-header { text-align: center; margin-bottom: 28px; padding-top: 14px; }
+
+  /* ── HIDDEN ── */
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ═══════════ MENU ═══════════ -->
+  <div id="screen-menu">
+    <div class="page-header">
+      <div class="badge">SY0-701</div>
+      <h1>CompTIA Security+</h1>
+      <p class="subtitle">Practice Exam</p>
+      <p class="subtitle2" id="question-count-label">Loading questions…</p>
+    </div>
+
+    <div class="card">
+      <h3>Configure Your Exam</h3>
+
+      <div class="config-row">
+        <span class="config-label">Domain Filter</span>
+        <div class="pill-group" id="domain-pills">
+          <button class="pill active" onclick="setDomain('All', this)">All Domains</button>
+          <button class="pill" onclick="setDomain('General Security Concepts', this)">General…</button>
+          <button class="pill" onclick="setDomain('Threats, Vulnerabilities & Mitigations', this)">Threats…</button>
+        </div>
+      </div>
+
+      <div class="config-row">
+        <span class="config-label">Number of Questions</span>
+        <div class="pill-group" id="count-pills">
+          <button class="pill" onclick="setCount(5, this)">5</button>
+          <button class="pill active" onclick="setCount(10, this)">10</button>
+          <button class="pill" onclick="setCount(15, this)">15</button>
+          <button class="pill" onclick="setCount(20, this)">20</button>
+          <button class="pill" onclick="setCount(30, this)">30</button>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-start primary" onclick="startTest(false)">
+          ▶ Practice Mode
+          <span class="btn-sub">No timer · Immediate feedback</span>
+        </button>
+        <button class="btn-start secondary" onclick="startTest(true)">
+          ⏱ Timed Mode
+          <span class="btn-sub" id="timed-label">15 min · Exam simulation</span>
+        </button>
+      </div>
+
+      <div style="border-top:1px solid #334155;margin-top:4px;padding-top:16px">
+        <span class="config-label" style="display:block;margin-bottom:8px">Question Bank</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="pill" onclick="downloadQuestions()">⬇ Download JSON</button>
+          <label class="pill" style="cursor:pointer;margin:0">
+            ⬆ Upload JSON
+            <input type="file" accept=".json,application/json" onchange="handleUpload(event)" style="display:none">
+          </label>
+          <span id="upload-label" style="font-size:12px;color:#64748b;font-family:'Courier New',monospace"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="domain-grid" id="domain-grid">
+      <div class="domain-card">
+        <div class="domain-icon">🔐</div>
+        <div class="domain-name">General Security Concepts</div>
+        <div class="domain-count" id="count-general">—</div>
+      </div>
+      <div class="domain-card">
+        <div class="domain-icon">⚠️</div>
+        <div class="domain-name">Threats, Vulnerabilities &amp; Mitigations</div>
+        <div class="domain-count" id="count-threats">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ TEST ═══════════ -->
+  <div id="screen-test" class="hidden">
+    <div class="top-bar">
+      <span class="progress-label" id="q-counter">1 / 10</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-bar" style="width:0%"></div></div>
+      <span class="timer hidden" id="timer-display">⏱ 15:00</span>
+    </div>
+
+    <div class="card" id="question-card">
+      <span class="domain-tag" id="q-domain-tag"></span>
+      <span class="lesson-tag" id="q-lesson-tag"></span>
+      <p class="question-text" id="q-text"></p>
+      <div class="options" id="q-options"></div>
+      <div class="explanation hidden" id="q-explanation">
+        <div class="expl-header" id="expl-header"></div>
+        <p class="expl-text" id="expl-text"></p>
+      </div>
+      <div class="nav-row hidden" id="nav-row">
+        <button class="btn-next" id="btn-next" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <button class="btn-quit" onclick="quitTest()">← Quit</button>
+  </div>
+
+  <!-- ═══════════ RESULTS ═══════════ -->
+  <div id="screen-results" class="hidden">
+    <div class="results-hero">
+      <div class="score-badge" id="score-badge">0%</div>
+      <h2 class="result-title" id="result-title">Results</h2>
+      <p class="result-sub" id="result-sub"></p>
+    </div>
+    <div class="card">
+      <h3>Domain Breakdown</h3>
+      <div id="domain-breakdown"></div>
+    </div>
+    <div class="card">
+      <h3>Question Review</h3>
+      <div id="question-review"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-start primary" onclick="showMenu()">← New Exam</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  QUESTION BANK — fetched from questions.json
+// ═══════════════════════════════════════════════════════
+let ALL_QUESTIONS = [];
+
+const DOMAIN_COLORS = {
+  "General Security Concepts": "#3b82f6",
+  "Threats, Vulnerabilities & Mitigations": "#ef4444"
+};
+
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let state = {
+  domain: "All",
+  count: 10,
+  questions: [],
+  currentQ: 0,
+  answers: {},
+  selected: null,
+  timed: false,
+  timeLeft: 0,
+  timerHandle: null
+};
+
+// ═══════════════════════════════════════════════════════
+//  CONFIG
+// ═══════════════════════════════════════════════════════
+function setDomain(d, btn) {
+  state.domain = d;
+  document.querySelectorAll('#domain-pills .pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function setCount(n, btn) {
+  state.count = n;
+  document.querySelectorAll('#count-pills .pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('timed-label').textContent = Math.round(n * 1.5) + ' min · Exam simulation';
+}
+
+// ═══════════════════════════════════════════════════════
+//  SCREEN SWITCHING
+// ═══════════════════════════════════════════════════════
+function showScreen(id) {
+  ['screen-menu','screen-test','screen-results'].forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== id);
+  });
+  window.scrollTo(0,0);
+}
+
+function showMenu() {
+  clearInterval(state.timerHandle);
+  showScreen('screen-menu');
+}
+
+// ═══════════════════════════════════════════════════════
+//  START TEST
+// ═══════════════════════════════════════════════════════
+function startTest(timed) {
+  const pool = state.domain === 'All'
+    ? ALL_QUESTIONS
+    : ALL_QUESTIONS.filter(q => q.domain === state.domain);
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  state.questions = shuffled.slice(0, Math.min(state.count, shuffled.length));
+  state.answers = {};
+  state.currentQ = 0;
+  state.selected = null;
+  state.timed = timed;
+
+  if (timed) {
+    state.timeLeft = state.questions.length * 90;
+    startTimer();
+  } else {
+    state.timeLeft = 0;
+    clearInterval(state.timerHandle);
+  }
+
+  showScreen('screen-test');
+  renderQuestion();
+}
+
+// ═══════════════════════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════════════════════
+function startTimer() {
+  clearInterval(state.timerHandle);
+  const el = document.getElementById('timer-display');
+  el.classList.remove('hidden');
+  updateTimerDisplay();
+  state.timerHandle = setInterval(() => {
+    state.timeLeft--;
+    updateTimerDisplay();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timerHandle);
+      showResults();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('timer-display');
+  const m = Math.floor(state.timeLeft / 60);
+  const s = state.timeLeft % 60;
+  el.textContent = '⏱ ' + m + ':' + String(s).padStart(2,'0');
+  el.classList.toggle('alert', state.timeLeft < 60);
+}
+
+// ═══════════════════════════════════════════════════════
+//  RENDER QUESTION
+// ═══════════════════════════════════════════════════════
+function renderQuestion() {
+  const q = state.questions[state.currentQ];
+  const n = state.currentQ + 1;
+  const total = state.questions.length;
+  const color = DOMAIN_COLORS[q.domain] || '#6366f1';
+
+  // Progress
+  document.getElementById('q-counter').textContent = n + ' / ' + total;
+  document.getElementById('progress-bar').style.width = ((n-1)/total*100) + '%';
+
+  // Timer visibility
+  document.getElementById('timer-display').classList.toggle('hidden', !state.timed);
+
+  // Domain tag
+  const dt = document.getElementById('q-domain-tag');
+  dt.textContent = q.domain;
+  dt.style.color = color;
+  dt.style.background = color + '20';
+  dt.style.borderColor = color + '40';
+
+  document.getElementById('q-lesson-tag').textContent = q.lesson;
+  document.getElementById('q-text').textContent = q.question;
+
+  // Options
+  const optDiv = document.getElementById('q-options');
+  optDiv.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML =
+      '<span class="opt-letter">' + String.fromCharCode(65+idx) + '</span>' +
+      '<span class="opt-text">' + opt + '</span>' +
+      '<span class="opt-mark" id="mark-' + idx + '"></span>';
+    btn.onclick = () => selectAnswer(idx);
+    optDiv.appendChild(btn);
+  });
+
+  // Hide explanation & nav
+  document.getElementById('q-explanation').classList.add('hidden');
+  document.getElementById('nav-row').classList.add('hidden');
+}
+
+// ═══════════════════════════════════════════════════════
+//  SELECT ANSWER
+// ═══════════════════════════════════════════════════════
+function selectAnswer(idx) {
+  if (state.selected !== null) return;
+  state.selected = idx;
+  const q = state.questions[state.currentQ];
+  state.answers[q.id] = idx;
+
+  const buttons = document.querySelectorAll('#q-options .option');
+  buttons.forEach((btn, i) => {
+    if (i === q.answer) {
+      btn.classList.add('correct');
+      btn.querySelector('.opt-mark').innerHTML = '<span class="tick">✓</span>';
+    } else if (i === idx && idx !== q.answer) {
+      btn.classList.add('wrong');
+      btn.querySelector('.opt-mark').innerHTML = '<span class="cross">✗</span>';
+    } else {
+      btn.classList.add('dim');
+    }
+    btn.onclick = null;
+  });
+
+  // Explanation
+  const isCorrect = idx === q.answer;
+  const expl = document.getElementById('q-explanation');
+  expl.className = 'explanation ' + (isCorrect ? 'correct-bg' : 'wrong-bg');
+  document.getElementById('expl-header').textContent = isCorrect ? '✅ Correct!' : '❌ Incorrect';
+  document.getElementById('expl-text').textContent = q.explanation;
+  expl.classList.remove('hidden');
+
+  // Next button
+  const navRow = document.getElementById('nav-row');
+  navRow.classList.remove('hidden');
+  const btn = document.getElementById('btn-next');
+  btn.textContent = (state.currentQ + 1 >= state.questions.length) ? 'View Results →' : 'Next Question →';
+}
+
+// ═══════════════════════════════════════════════════════
+//  NEXT QUESTION
+// ═══════════════════════════════════════════════════════
+function nextQuestion() {
+  state.selected = null;
+  if (state.currentQ + 1 >= state.questions.length) {
+    showResults();
+  } else {
+    state.currentQ++;
+    renderQuestion();
+    window.scrollTo(0,0);
+  }
+}
+
+function quitTest() {
+  clearInterval(state.timerHandle);
+  showMenu();
+}
+
+// ═══════════════════════════════════════════════════════
+//  RESULTS
+// ═══════════════════════════════════════════════════════
+function showResults() {
+  clearInterval(state.timerHandle);
+
+  let correct = 0;
+  state.questions.forEach(q => { if (state.answers[q.id] === q.answer) correct++; });
+  const total = state.questions.length;
+  const pct = Math.round(correct / total * 100);
+  const passed = pct >= 75;
+
+  // Hero
+  const badge = document.getElementById('score-badge');
+  badge.textContent = pct + '%';
+  badge.style.background = passed ? '#10b981' : '#ef4444';
+  document.getElementById('result-title').textContent = passed ? '🎉 Nice Work!' : '📚 Keep Studying';
+  document.getElementById('result-sub').textContent =
+    correct + ' / ' + total + ' correct · ' + (passed ? 'Above passing threshold (75%)' : 'Passing threshold is 75%');
+
+  // Domain breakdown
+  const breakdown = {};
+  state.questions.forEach(q => {
+    if (!breakdown[q.domain]) breakdown[q.domain] = {c:0, t:0};
+    breakdown[q.domain].t++;
+    if (state.answers[q.id] === q.answer) breakdown[q.domain].c++;
+  });
+  const bDiv = document.getElementById('domain-breakdown');
+  bDiv.innerHTML = '';
+  Object.entries(breakdown).forEach(([domain, {c, t}]) => {
+    const dp = Math.round(c/t*100);
+    const color = DOMAIN_COLORS[domain] || '#6366f1';
+    bDiv.innerHTML +=
+      '<div class="domain-row">' +
+        '<div class="domain-row-label">' + domain + '</div>' +
+        '<div class="domain-row-bar"><div class="domain-row-fill" style="width:' + dp + '%;background:' + color + '"></div></div>' +
+        '<div class="domain-row-pct">' + c + '/' + t + '</div>' +
+      '</div>';
+  });
+
+  // Question review
+  const rDiv = document.getElementById('question-review');
+  rDiv.innerHTML = '';
+  state.questions.forEach((q, i) => {
+    const ua = state.answers[q.id];
+    const isOk = ua === q.answer;
+    const numColor = isOk ? '#10b981' : '#ef4444';
+    let wrongHtml = '';
+    if (!isOk) {
+      wrongHtml =
+        '<div class="review-ans">' +
+          '<span class="review-wrong">Your answer: ' + (ua !== undefined ? q.options[ua] : 'Not answered') + '</span>' +
+          '<span class="review-right">Correct: ' + q.options[q.answer] + '</span>' +
+        '</div>';
+    }
+    rDiv.innerHTML +=
+      '<div class="review-item">' +
+        '<div class="review-header">' +
+          '<span class="review-num" style="color:' + numColor + '">' + (isOk ? '✓' : '✗') + ' Q' + (i+1) + '</span>' +
+          '<span class="review-lesson">' + q.lesson + '</span>' +
+        '</div>' +
+        '<p class="review-q">' + q.question + '</p>' +
+        wrongHtml +
+      '</div>';
+  });
+
+  showScreen('screen-results');
+}
+
+// ═══════════════════════════════════════════════════════
+//  INIT — fetch questions.json, then show menu
+// ═══════════════════════════════════════════════════════
+function updateMenuStats() {
+  const cGeneral = ALL_QUESTIONS.filter(q => q.domain === 'General Security Concepts').length;
+  const cThreats  = ALL_QUESTIONS.filter(q => q.domain === 'Threats, Vulnerabilities & Mitigations').length;
+  document.getElementById('question-count-label').textContent =
+    ALL_QUESTIONS.length + ' questions · Lessons 1–4 · Based on the Official Study Guide';
+  document.getElementById('count-general').textContent = cGeneral + ' questions';
+  document.getElementById('count-threats').textContent  = cThreats  + ' questions';
+  document.getElementById('timed-label').textContent = '15 min · Exam simulation';
+}
+
+async function initApp() {
+  try {
+    const res = await fetch('questions.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    ALL_QUESTIONS = await res.json();
+  } catch (err) {
+    console.error('Could not load questions.json:', err);
+    document.getElementById('question-count-label').textContent =
+      'Failed to load questions. Upload a questions.json file below.';
+  }
+  updateMenuStats();
+}
+
+function downloadQuestions() {
+  const blob = new Blob([JSON.stringify(ALL_QUESTIONS, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'questions.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function handleUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data) || data.length === 0) throw new Error('Invalid format');
+      ALL_QUESTIONS = data;
+      updateMenuStats();
+      document.getElementById('upload-label').textContent = '✓ ' + data.length + ' questions loaded';
+      e.target.value = '';
+    } catch {
+      alert('Invalid questions.json. Expected a JSON array of question objects.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+initApp();
+showMenu();
+</script>
+</body>
+</html>
