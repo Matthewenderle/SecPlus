@@ -529,11 +529,17 @@ function nextCard() {
     state.cardMode = state.mode;
   }
 
+  // Instantly reset flip position before rendering new content,
+  // so the back face never flashes while transitioning to the next card.
+  const flipInner = document.getElementById('flip-inner');
+  flipInner.style.transition = 'none';
+  flipInner.classList.remove('flipped');
+  flipInner.offsetHeight; // force reflow
+  flipInner.style.transition = '';
+
   renderCard();
   updateProgress();
 
-  // Reset flip state
-  document.getElementById('flip-inner').classList.remove('flipped');
   document.getElementById('action-row').classList.add('hidden');
   document.getElementById('btn-skip').classList.add('hidden');
 }
@@ -551,7 +557,7 @@ function renderCard() {
     // FRONT: show abbreviation
     front.innerHTML =
       '<div class="card-abbr" style="font-size:' + abbrSize + '">' + escHtml(card.abbr) + '</div>' +
-      '<div class="card-prompt">What does this stand for?</div>' +
+      '<div class="card-prompt">What is or what does this stand for?</div>' +
       '<div class="tap-hint">tap to reveal</div>';
 
     // BACK: show full name + description
