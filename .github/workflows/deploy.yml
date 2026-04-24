@@ -25,6 +25,8 @@ jobs:
           mkdir -p public
           cp index.html public/
           cp questions.json public/
+          cp acronyms.html public/
+          cp acronyms.json public/
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
