@@ -1,119 +1,2953 @@
 [
-  { "abbr": "IAM",      "full": "Identity and Access Management",                        "desc": "Controls identities and resource permissions across systems.",                                                  "cats": ["🧠"] },
-  { "abbr": "AAA",      "full": "Authentication, Authorization, Accounting",             "desc": "Verify who you are, decide what you can access, log what you did.",                                            "cats": ["🧠"] },
-  { "abbr": "MFA",      "full": "Multifactor Authentication",                            "desc": "Requires two or more factors: something you know, have, or are.",                                              "cats": ["🧠"] },
-  { "abbr": "SSO",      "full": "Single Sign-On",                                        "desc": "One set of credentials grants access to multiple systems or applications.",                                    "cats": ["🧠"] },
-  { "abbr": "802.1X",   "full": "Network Access Control (Port-Based)",                   "desc": "Port-based authentication standard; clients must authenticate before network access is granted.",              "cats": ["🧠"] },
-  { "abbr": "EAP",      "full": "Extensible Authentication Protocol",                    "desc": "Authentication framework used by 802.1X; supports many methods (PEAP, EAP-TLS...).",                          "cats": ["🧠"] },
-  { "abbr": "PEAP",     "full": "Protected EAP",                                         "desc": "Encapsulates EAP inside a TLS tunnel so credentials are protected in transit.",                               "cats": ["🧠"] },
-  { "abbr": "EAP-TLS",  "full": "Extensible Authentication Protocol – Transport Layer Security", "desc": "Certificate-based mutual authentication; considered one of the most secure EAP methods.",               "cats": ["🧠", "🔐"] },
-  { "abbr": "RADIUS",   "full": "Remote Authentication Dial-in User Service",            "desc": "Centralized AAA server used for network access control.",                                "port": "UDP/1812 (auth), UDP/1813 (accounting)", "cats": ["🧠", "⚡"] },
-  { "abbr": "TACACS+",  "full": "Terminal Access Controller Access Control System Plus", "desc": "AAA protocol that encrypts the entire session payload; commonly used in Cisco environments.",                 "port": "TCP/49", "cats": ["🧠", "⚡"] },
-  { "abbr": "LDAP",     "full": "Lightweight Directory Access Protocol",                 "desc": "Queries and modifies directory services (users, groups, objects).",                                           "port": "TCP/389 (plain), TCP/636 (LDAPS)", "cats": ["🧠", "⚡"] },
-  { "abbr": "Kerberos", "full": "Kerberos",                                              "desc": "Ticket-based network authentication protocol; a KDC issues TGTs to authenticate clients.",                    "cats": ["🧠"] },
-  { "abbr": "KDC",      "full": "Key Distribution Center",                               "desc": "The Kerberos server that authenticates clients and issues Ticket Granting Tickets (TGTs).",                   "cats": ["🧠"] },
-  { "abbr": "TGT",      "full": "Ticket Granting Ticket",                                "desc": "Initial Kerberos token used to request service-specific tickets without re-entering credentials.",            "cats": ["🧠"] },
-
-  { "abbr": "PKI",      "full": "Public Key Infrastructure",                             "desc": "Framework of policies, hardware, software, and procedures for managing digital certificates.",               "cats": ["🔐"] },
-  { "abbr": "CA",       "full": "Certificate Authority",                                 "desc": "Trusted entity that signs and issues digital certificates.",                                                   "cats": ["🔐"] },
-  { "abbr": "RA",       "full": "Registration Authority",                                "desc": "Verifies an applicant's identity before forwarding a certificate request to the CA.",                         "cats": ["🔐"] },
-  { "abbr": "CSR",      "full": "Certificate Signing Request",                           "desc": "File containing a public key and identity info submitted to a CA to obtain a certificate.",                   "cats": ["🔐"] },
-  { "abbr": "CRL",      "full": "Certificate Revocation List",                           "desc": "CA-published list of digital certificates that have been revoked before their expiry date.",                  "cats": ["🔐"] },
-  { "abbr": "OCSP",     "full": "Online Certificate Status Protocol",                    "desc": "Real-time protocol for checking whether a specific certificate has been revoked.",                            "cats": ["🔐"] },
-  { "abbr": "TLS",      "full": "Transport Layer Security",                              "desc": "Cryptographic protocol securing data in transit; successor to SSL. Used by HTTPS.",                          "port": "TCP/443", "cats": ["🔐", "⚡"] },
-  { "abbr": "SSL",      "full": "Secure Sockets Layer",                                  "desc": "Deprecated predecessor to TLS; vulnerable to POODLE and BEAST attacks. Should not be used.",                 "cats": ["🔐"] },
-  { "abbr": "RSA",      "full": "Rivest–Shamir–Adleman",                                 "desc": "Widely used asymmetric encryption algorithm based on the difficulty of factoring large integers.",            "cats": ["🔐"] },
-  { "abbr": "AES",      "full": "Advanced Encryption Standard",                          "desc": "Fast, widely used symmetric block cipher supporting 128, 192, or 256-bit keys.",                             "cats": ["🔐"] },
-  { "abbr": "ECC",      "full": "Elliptic-Curve Cryptography",                           "desc": "Asymmetric cryptography using elliptic curves; achieves strong security with smaller keys than RSA.",        "cats": ["🔐"] },
-  { "abbr": "DHE",      "full": "Diffie-Hellman Ephemeral",                              "desc": "Key exchange that generates a fresh key pair for each session, enabling Perfect Forward Secrecy.",           "cats": ["🔐"] },
-  { "abbr": "ECDHE",    "full": "Elliptic-Curve Diffie-Hellman Ephemeral",               "desc": "DHE using elliptic-curve math; faster and provides PFS.",                                                    "cats": ["🔐"] },
-  { "abbr": "PFS",      "full": "Perfect Forward Secrecy",                               "desc": "Session keys are independent; compromise of a long-term key does not expose past session traffic.",          "cats": ["🔐"] },
-  { "abbr": "DES",      "full": "Data Encryption Standard",                              "desc": "Legacy 56-bit symmetric cipher; considered broken due to its short key length.",                              "cats": ["🔐"] },
-  { "abbr": "3DES",     "full": "Triple DES (3DES)",                                     "desc": "Applies DES three times for added security; deprecated for performance and vulnerability reasons.",           "cats": ["🔐"] },
-  { "abbr": "SHA",      "full": "Secure Hash Algorithm",                                 "desc": "Family of cryptographic hash functions (SHA-1, SHA-256, SHA-3) used for integrity verification.",             "cats": ["🔐"] },
-  { "abbr": "MD5",      "full": "Message Digest 5",                                      "desc": "128-bit hash algorithm with known collision vulnerabilities; broken for security use.",                       "cats": ["🔐"] },
-  { "abbr": "HMAC",     "full": "Hash-based Message Authentication Code",                "desc": "Combines a hash function with a shared secret to verify both integrity and authenticity.",                   "cats": ["🔐"] },
-  { "abbr": "PBKDF2",   "full": "Password-Based Key Derivation Function 2",              "desc": "Intentionally slow key-stretching function that makes brute-force attacks on passwords expensive.",          "cats": ["🔐"] },
-  { "abbr": "IV",       "full": "Initialization Vector",                                 "desc": "Random value used in encryption to ensure identical plaintexts produce different ciphertexts.",               "cats": ["🔐"] },
-  { "abbr": "TPM",      "full": "Trusted Platform Module",                               "desc": "Hardware chip providing secure key storage, attestation, and measured boot functionality.",                  "cats": ["🔐"] },
-  { "abbr": "HSM",      "full": "Hardware Security Module",                              "desc": "Dedicated physical device used for enterprise-grade cryptographic processing and key management.",            "cats": ["🔐"] },
-  { "abbr": "FDE",      "full": "Full Disk Encryption",                                  "desc": "Encrypts an entire storage volume so data is unreadable without authentication (e.g., BitLocker).",           "cats": ["🔐"] },
-  { "abbr": "ASLR",     "full": "Address Space Layout Randomization",                    "desc": "OS security feature that randomizes memory addresses to make exploitation harder.",                           "cats": ["🔐"] },
-  { "abbr": "DEP",      "full": "Data Execution Prevention",                             "desc": "Marks memory pages as non-executable to block shellcode from running in data regions.",                      "cats": ["🔐"] },
-  { "abbr": "WPA2",     "full": "Wi-Fi Protected Access 2",                              "desc": "Wi-Fi security protocol using AES/CCMP; the current standard for most wireless networks.",                   "cats": ["🔐"] },
-  { "abbr": "WPA3",     "full": "Wi-Fi Protected Access 3",                              "desc": "Latest Wi-Fi security standard; replaces PSK with SAE for stronger handshake protection.",                   "cats": ["🔐"] },
-  { "abbr": "CCMP",     "full": "Counter Mode / CBC-MAC Protocol",                       "desc": "AES-based encryption mode used in WPA2 for per-frame wireless encryption.",                                  "cats": ["🔐"] },
-  { "abbr": "TKIP",     "full": "Temporal Key Integrity Protocol",                       "desc": "Legacy replacement for WEP used in WPA; deprecated and no longer considered secure.",                        "cats": ["🔐"] },
-  { "abbr": "SAE",      "full": "Simultaneous Authentication of Equals",                 "desc": "WPA3 handshake replacing PSK; resistant to offline dictionary attacks.",                                      "cats": ["🔐"] },
-  { "abbr": "WPS",      "full": "Wi-Fi Protected Setup",                                 "desc": "Simplified wireless pairing feature; vulnerable to PIN brute-force (Reaver attack). Disable it.",           "cats": ["🔐"] },
-  { "abbr": "VPN",      "full": "Virtual Private Network",                               "desc": "Creates an encrypted tunnel between two endpoints over an untrusted network.",                               "cats": ["🔐"] },
-  { "abbr": "IPSec",    "full": "Internet Protocol Security",                            "desc": "Suite of protocols that authenticates and encrypts IP packets at the network layer.",                        "cats": ["🔐"] },
-  { "abbr": "AH",       "full": "Authentication Header",                                 "desc": "IPsec protocol providing integrity and authentication only; does not encrypt payload.",                      "cats": ["🔐"] },
-  { "abbr": "ESP",      "full": "Encapsulating Security Payload",                        "desc": "IPsec protocol providing encryption, integrity, and optional authentication.",                               "cats": ["🔐"] },
-  { "abbr": "BIOS",     "full": "Basic Input/Output System",                             "desc": "Legacy firmware that initializes hardware at startup before passing control to the OS.",                     "cats": ["🔐"] },
-  { "abbr": "UEFI",     "full": "Unified Extensible Firmware Interface",                 "desc": "Modern BIOS replacement; supports Secure Boot, faster startup, and GPT disks.",                             "cats": ["🔐"] },
-
-  { "abbr": "TCP",      "full": "Transmission Control Protocol",                         "desc": "Reliable, connection-oriented transport protocol using a three-way handshake (SYN/SYN-ACK/ACK).",           "cats": ["⚡"] },
-  { "abbr": "UDP",      "full": "User Datagram Protocol",                                "desc": "Connectionless, low-latency transport with no delivery guarantees.",                                         "cats": ["⚡"] },
-  { "abbr": "HTTP",     "full": "Hypertext Transfer Protocol",                           "desc": "Unencrypted web traffic protocol; data is transmitted in plaintext.",                                        "port": "TCP/80", "cats": ["⚡"] },
-  { "abbr": "HTTPS",    "full": "Hypertext Transfer Protocol Secure",                    "desc": "HTTP encrypted over TLS; the standard for secure web browsing.",                                             "port": "TCP/443", "cats": ["⚡", "🔐"] },
-  { "abbr": "DNS",      "full": "Domain Name System",                                    "desc": "Resolves human-readable hostnames to IP addresses.",                                                         "port": "TCP & UDP/53", "cats": ["⚡"] },
-  { "abbr": "SSH",      "full": "Secure Shell",                                          "desc": "Encrypted protocol for remote login, file transfer (SFTP), and tunneling.",                                  "port": "TCP/22", "cats": ["⚡"] },
-  { "abbr": "FTP",      "full": "File Transfer Protocol",                                "desc": "Legacy file transfer protocol; sends credentials in plaintext. Use SFTP instead.",                          "port": "TCP/21 (control), TCP/20 (data)", "cats": ["⚡"] },
-  { "abbr": "SFTP",     "full": "SSH File Transfer Protocol",                            "desc": "Secure file transfer that runs over SSH (not related to FTPS).",                                             "port": "TCP/22", "cats": ["⚡"] },
-  { "abbr": "Telnet",   "full": "Telnet",                                                "desc": "Plaintext remote terminal protocol; insecure. Replaced by SSH.",                                             "port": "TCP/23", "cats": ["⚡"] },
-  { "abbr": "SMTP",     "full": "Simple Mail Transfer Protocol",                         "desc": "Standard protocol for sending email between mail servers.",                                                   "port": "TCP/25", "cats": ["⚡"] },
-  { "abbr": "SMTPS",    "full": "SMTP Secure",                                           "desc": "SMTP wrapped in TLS/SSL for encrypted email submission.",                                                     "port": "TCP/465", "cats": ["⚡"] },
-  { "abbr": "DHCP",     "full": "Dynamic Host Configuration Protocol",                   "desc": "Automatically assigns IP addresses, gateways, and DNS servers to network clients.",                          "port": "UDP/67 (server), UDP/68 (client)", "cats": ["⚡"] },
-  { "abbr": "SNMP",     "full": "Simple Network Management Protocol",                    "desc": "Monitors and manages network devices; traps are asynchronous alerts sent by agents.",                       "port": "UDP/161 (queries), UDP/162 (traps)", "cats": ["⚡"] },
-  { "abbr": "NTP",      "full": "Network Time Protocol",                                 "desc": "Synchronizes clocks across devices; critical for log correlation and Kerberos authentication.",              "port": "UDP/123", "cats": ["⚡"] },
-  { "abbr": "SMB",      "full": "Server Message Block",                                  "desc": "Windows file and printer sharing protocol; also used by ransomware like WannaCry (EternalBlue).",           "port": "TCP/445", "cats": ["⚡"] },
-  { "abbr": "RDP",      "full": "Remote Desktop Protocol",                               "desc": "Microsoft protocol that provides a graphical desktop session over the network.",                             "port": "TCP/3389", "cats": ["⚡"] },
-  { "abbr": "SIP",      "full": "Session Initiation Protocol",                           "desc": "Signaling protocol for establishing VoIP and video calls.",                                                  "port": "TCP & UDP/5060, TLS/5061", "cats": ["⚡"] },
-  { "abbr": "IKE",      "full": "Internet Key Exchange",                                 "desc": "Negotiates Security Associations and cryptographic keys for IPsec tunnels.",                                 "port": "UDP/500", "cats": ["⚡", "🔐"] },
-  { "abbr": "NAT",      "full": "Network Address Translation",                           "desc": "Maps private IP addresses to one or more public IPs at a router boundary.",                                  "cats": ["⚡"] },
-  { "abbr": "PAT",      "full": "Port Address Translation",                              "desc": "NAT variant that multiplexes many private hosts through a single public IP using port numbers.",             "cats": ["⚡"] },
-  { "abbr": "SSID",     "full": "Service Set Identifier",                                "desc": "The broadcast name of a wireless network visible to client devices.",                                        "cats": ["⚡"] },
-  { "abbr": "BSSID",    "full": "Basic Service Set Identifier",                          "desc": "The MAC address of a specific access point (AP) radio interface.",                                           "cats": ["⚡"] },
-
-  { "abbr": "IDS",      "full": "Intrusion Detection System",                            "desc": "Passively monitors traffic/host activity and generates alerts; does NOT block.",                             "cats": ["🛡️"] },
-  { "abbr": "NIDS",     "full": "Network-based Intrusion Detection System",              "desc": "Passive sensor placed on a network segment to analyze traffic for anomalies or signatures.",                 "cats": ["🛡️"] },
-  { "abbr": "HIDS",     "full": "Host-based Intrusion Detection System",                 "desc": "Agent installed on an individual system to monitor local logs, files, and activity.",                        "cats": ["🛡️"] },
-  { "abbr": "IPS",      "full": "Intrusion Prevention System",                           "desc": "Inline device that detects AND actively blocks malicious traffic in real time.",                             "cats": ["🛡️"] },
-  { "abbr": "NIPS",     "full": "Network-based Intrusion Prevention System",             "desc": "Inline IPS placed in the network path to block malicious traffic before it reaches targets.",               "cats": ["🛡️"] },
-  { "abbr": "HIPS",     "full": "Host-based Intrusion Prevention System",                "desc": "IPS agent on an endpoint that can actively block malicious local activity.",                                 "cats": ["🛡️"] },
-  { "abbr": "SIEM",     "full": "Security Information and Event Management",             "desc": "Centralized platform for log aggregation, correlation, alerting, and compliance reporting.",                 "cats": ["🛡️"] },
-  { "abbr": "SOAR",     "full": "Security Orchestration, Automation, and Response",      "desc": "Automates security workflows and incident response actions using playbooks.",                                "cats": ["🛡️"] },
-  { "abbr": "EDR",      "full": "Endpoint Detection and Response",                       "desc": "Agent-based platform providing endpoint telemetry, behavioral detection, and containment capabilities.",    "cats": ["🛡️"] },
-  { "abbr": "DLP",      "full": "Data Loss Prevention",                                  "desc": "Monitors and restricts the movement of sensitive data to prevent unauthorized exfiltration.",                "cats": ["🛡️", "📊"] },
-  { "abbr": "FIM",      "full": "File Integrity Monitoring",                             "desc": "Detects unauthorized changes to critical files, directories, or configurations.",                            "cats": ["🛡️"] },
-  { "abbr": "AV",       "full": "Antivirus",                                             "desc": "Security software that detects, quarantines, and removes malware using signatures and heuristics.",          "cats": ["🛡️"] },
-  { "abbr": "IoC",      "full": "Indicator of Compromise",                               "desc": "Observable artifact or evidence suggesting a system has been breached (e.g., malicious IP, hash).",        "cats": ["🛡️"] },
-  { "abbr": "IR",       "full": "Incident Response",                                     "desc": "Structured process: Preparation → Identification → Containment → Eradication → Recovery → Lessons Learned.", "cats": ["🛡️"] },
-  { "abbr": "IRP",      "full": "Incident Response Plan",                                "desc": "Documented procedures, roles, and playbooks for responding to security incidents.",                          "cats": ["🛡️"] },
-  { "abbr": "CERT",     "full": "Computer Emergency Response Team",                      "desc": "Team responsible for receiving, tracking, and responding to computer security incidents.",                   "cats": ["🛡️"] },
-  { "abbr": "CSIRT",    "full": "Computer Security Incident Response Team",              "desc": "Security-focused team that coordinates detection, investigation, and response to incidents.",                "cats": ["🛡️"] },
-
-  { "abbr": "OWASP",    "full": "Open Web Application Security Project",                 "desc": "Non-profit that publishes the OWASP Top 10 list of critical web application vulnerabilities.",             "cats": ["📊"] },
-  { "abbr": "XSS",      "full": "Cross-Site Scripting",                                  "desc": "Injects malicious scripts into web pages viewed by other users to steal data or session tokens.",           "cats": ["📊"] },
-  { "abbr": "SQLi",     "full": "SQL Injection",                                         "desc": "Inserts malicious SQL into application input fields to manipulate or dump the backend database.",            "cats": ["📊"] },
-  { "abbr": "CSRF",     "full": "Cross-Site Request Forgery",                            "desc": "Tricks an authenticated user's browser into making unwanted requests to a trusted site.",                    "cats": ["📊"] },
-  { "abbr": "NIST",     "full": "National Institute of Standards and Technology",        "desc": "US agency that publishes cybersecurity frameworks and guidelines (NIST CSF, SP 800-53, etc.).",             "cats": ["📊"] },
-  { "abbr": "CIS",      "full": "Center for Internet Security",                          "desc": "Publishes the CIS Controls (prioritized security actions) and CIS Benchmarks (hardening guides).",          "cats": ["📊"] },
-  { "abbr": "GDPR",     "full": "General Data Protection Regulation",                    "desc": "EU regulation governing how organizations collect, store, and process personal data of EU residents.",       "cats": ["📊"] },
-  { "abbr": "PCI DSS",  "full": "Payment Card Industry Data Security Standard",          "desc": "Security standard required for any organization that stores, processes, or transmits cardholder data.",     "cats": ["📊"] },
-  { "abbr": "PII",      "full": "Personally Identifiable Information",                   "desc": "Any data that can be used alone or combined to identify a specific individual.",                             "cats": ["📊"] },
-  { "abbr": "PHI",      "full": "Protected Health Information",                          "desc": "Health-related data protected by HIPAA; includes diagnoses, treatments, and insurance information.",         "cats": ["📊"] },
-  { "abbr": "BCP",      "full": "Business Continuity Plan",                              "desc": "Strategy ensuring critical business functions continue during and after a disruptive event.",                "cats": ["📊"] },
-  { "abbr": "DRP",      "full": "Disaster Recovery Plan",                                "desc": "Documented procedures for restoring IT systems and data after a disaster or outage.",                        "cats": ["📊"] },
-  { "abbr": "RTO",      "full": "Recovery Time Objective",                               "desc": "Maximum acceptable duration of downtime before service must be restored.",                                   "cats": ["📊"] },
-  { "abbr": "RPO",      "full": "Recovery Point Objective",                              "desc": "Maximum acceptable amount of data loss, measured as time since the last good backup.",                       "cats": ["📊"] },
-  { "abbr": "SLE",      "full": "Single Loss Expectancy",                                "desc": "Expected monetary loss from a single occurrence of a risk: Asset Value × Exposure Factor.",                  "cats": ["📊"] },
-  { "abbr": "ARO",      "full": "Annualized Rate of Occurrence",                         "desc": "Estimated frequency (per year) that a specific threat event is expected to occur.",                          "cats": ["📊"] },
-  { "abbr": "ALE",      "full": "Annualized Loss Expectancy",                            "desc": "Expected yearly financial loss from a threat: SLE × ARO.",                                                   "cats": ["📊"] },
-  { "abbr": "SaaS",     "full": "Software as a Service",                                 "desc": "Cloud model where the provider manages the full application stack; customer manages data and users.",        "cats": ["📊"] },
-  { "abbr": "PaaS",     "full": "Platform as a Service",                                 "desc": "Cloud model providing a runtime/platform; customer manages applications and data.",                          "cats": ["📊"] },
-  { "abbr": "IaaS",     "full": "Infrastructure as a Service",                           "desc": "Cloud model providing virtualized compute, storage, and networking; customer manages everything above.",    "cats": ["📊"] },
-  { "abbr": "CASB",     "full": "Cloud Access Security Broker",                          "desc": "Security policy enforcement point between users and cloud services; provides visibility and control.",       "cats": ["📊"] },
-  { "abbr": "VPC",      "full": "Virtual Private Cloud",                                 "desc": "Logically isolated network segment within a public cloud provider's infrastructure.",                        "cats": ["📊"] }
+  {
+    "abbr": "3DES",
+    "full": "Triple Data Encryption Standard",
+    "desc": "Triple Data Encryption Standard; applies DES three times and is deprecated for modern security use.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "AAA",
+    "full": "Authentication, Authorization, and Accounting",
+    "desc": "Verify who you are, decide what you can access, and log what you did.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "ABAC",
+    "full": "Attribute-based Access Control",
+    "desc": "Official SY0-601 acronym for Attribute-based Access Control; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "ACL",
+    "full": "Access Control List",
+    "desc": "Official SY0-601 acronym for Access Control List; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "AD",
+    "full": "Active Directory",
+    "desc": "Official SY0-601 acronym for Active Directory; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "AES",
+    "full": "Advanced Encryption Standard",
+    "desc": "Fast, widely used symmetric block cipher supporting 128, 192, or 256-bit keys.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "AES256",
+    "full": "Advanced Encryption Standards 256bit",
+    "desc": "Official SY0-601 acronym for Advanced Encryption Standards 256bit; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "AH",
+    "full": "Authentication Header",
+    "desc": "IPsec protocol providing integrity and authentication only; does not encrypt payload.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "AI",
+    "full": "Artificial Intelligence",
+    "desc": "Official SY0-601 acronym for Artificial Intelligence; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "AIS",
+    "full": "Automated Indicator Sharing",
+    "desc": "Official SY0-601 acronym for Automated Indicator Sharing; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "ALE",
+    "full": "Annualized Loss Expectancy",
+    "desc": "Expected yearly financial loss from a threat: SLE × ARO.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "AP",
+    "full": "Access Point",
+    "desc": "Official SY0-601 acronym for Access Point; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "API",
+    "full": "Application Programming Interface",
+    "desc": "Official SY0-601 acronym for Application Programming Interface; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "APT",
+    "full": "Advanced Persistent Threat",
+    "desc": "Official SY0-601 acronym for Advanced Persistent Threat; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "ARO",
+    "full": "Annualized Rate of Occurrence",
+    "desc": "Estimated frequency (per year) that a specific threat event is expected to occur.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ARP",
+    "full": "Address Resolution Protocol",
+    "desc": "Official SY0-601 acronym for Address Resolution Protocol; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "ASLR",
+    "full": "Address Space Layout Randomization",
+    "desc": "OS security feature that randomizes memory addresses to make exploitation harder.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "ASP",
+    "full": "Active Server Pages",
+    "desc": "Official SY0-601 acronym for Active Server Pages; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ATT&CK",
+    "full": "Adversarial Tactics, Techniques, and Common Knowledge",
+    "desc": "Official SY0-601 acronym for Adversarial Tactics, Techniques, and Common Knowledge; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "AUP",
+    "full": "Acceptable Use Policy",
+    "desc": "Official SY0-601 acronym for Acceptable Use Policy; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "AV",
+    "full": "Antivirus",
+    "desc": "Security software that detects, quarantines, and removes malware using signatures and heuristics.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "BASH",
+    "full": "Bourne Again Shell",
+    "desc": "Official SY0-601 acronym for Bourne Again Shell; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "BCP",
+    "full": "Business Continuity Planning",
+    "desc": "Business continuity planning for keeping critical business functions operating during and after disruption.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "BGP",
+    "full": "Border Gateway Protocol",
+    "desc": "Official SY0-601 acronym for Border Gateway Protocol; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "BIA",
+    "full": "Business Impact Analysis",
+    "desc": "Official SY0-601 acronym for Business Impact Analysis; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "BIOS",
+    "full": "Basic Input/Output System",
+    "desc": "Legacy firmware that initializes hardware at startup before passing control to the OS.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "BPA",
+    "full": "Business Partnership Agreement",
+    "desc": "Official SY0-601 acronym for Business Partnership Agreement; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "BPDU",
+    "full": "Bridge Protocol Data Unit",
+    "desc": "Official SY0-601 acronym for Bridge Protocol Data Unit; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "BSSID",
+    "full": "Basic Service Set Identifier",
+    "desc": "The MAC address of a specific access point (AP) radio interface.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "BYOD",
+    "full": "Bring Your Own Device",
+    "desc": "Official SY0-601 acronym for Bring Your Own Device; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CA",
+    "full": "Certificate Authority",
+    "desc": "Trusted entity that signs and issues digital certificates.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "CAPTCHA",
+    "full": "Completely Automated Public Turing Test to Tell Computers and Humans Apart",
+    "desc": "Official SY0-601 acronym for Completely Automated Public Turing Test to Tell Computers and Humans Apart; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "CAR",
+    "full": "Corrective Action Report",
+    "desc": "Official SY0-601 acronym for Corrective Action Report; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CASB",
+    "full": "Cloud Access Security Broker",
+    "desc": "Security policy enforcement point between users and cloud services; provides visibility and control.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CBC",
+    "full": "Cipher Block Chaining",
+    "desc": "Official SY0-601 acronym for Cipher Block Chaining; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "CBT",
+    "full": "Computer-based Training",
+    "desc": "Official SY0-601 acronym for Computer-based Training; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CCMP",
+    "full": "Counter-Mode/CBC-MAC Protocol",
+    "desc": "Counter-Mode/CBC-MAC Protocol; AES-based encryption mode used by WPA2 for wireless frame protection.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "CCTV",
+    "full": "Closed-Circuit Television",
+    "desc": "Official SY0-601 acronym for Closed-Circuit Television; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CERT",
+    "full": "Computer Emergency Response Team",
+    "desc": "Team responsible for receiving, tracking, and responding to computer security incidents.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "CFB",
+    "full": "Cipher Feedback",
+    "desc": "Official SY0-601 acronym for Cipher Feedback; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "CHAP",
+    "full": "Challenge-Handshake Authentication Protocol",
+    "desc": "Official SY0-601 acronym for Challenge-Handshake Authentication Protocol; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "CIO",
+    "full": "Chief Information Officer",
+    "desc": "Official SY0-601 acronym for Chief Information Officer; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CIRT",
+    "full": "Computer Incident Response Team",
+    "desc": "Official SY0-601 acronym for Computer Incident Response Team; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "CIS",
+    "full": "Center for Internet Security",
+    "desc": "Publishes the CIS Controls (prioritized security actions) and CIS Benchmarks (hardening guides).",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CMS",
+    "full": "Content Management System",
+    "desc": "Official SY0-601 acronym for Content Management System; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CN",
+    "full": "Common Name",
+    "desc": "Official SY0-601 acronym for Common Name; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "COOP",
+    "full": "Continuity of Operations Planning",
+    "desc": "Official SY0-601 acronym for Continuity of Operations Planning; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "COPE",
+    "full": "Corporate-owned Personally Enabled",
+    "desc": "Official SY0-601 acronym for Corporate-owned Personally Enabled; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CP",
+    "full": "Contingency Planning",
+    "desc": "Official SY0-601 acronym for Contingency Planning; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CRC",
+    "full": "Cyclic Redundancy Check",
+    "desc": "Official SY0-601 acronym for Cyclic Redundancy Check; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CRL",
+    "full": "Certificate Revocation List",
+    "desc": "CA-published list of digital certificates that have been revoked before their expiry date.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "CSA",
+    "full": "Cloud Security Alliance",
+    "desc": "Official SY0-601 acronym for Cloud Security Alliance; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CSIRT",
+    "full": "Computer Security Incident Response Team",
+    "desc": "Security-focused team that coordinates detection, investigation, and response to incidents.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "CSO",
+    "full": "Chief Security Officer",
+    "desc": "Official SY0-601 acronym for Chief Security Officer; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CSP",
+    "full": "Cloud Service Provider",
+    "desc": "Official SY0-601 acronym for Cloud Service Provider; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CSR",
+    "full": "Certificate Signing Request",
+    "desc": "File containing a public key and identity info submitted to a CA to obtain a certificate.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "CSRF",
+    "full": "Cross-Site Request Forgery",
+    "desc": "Tricks an authenticated user's browser into making unwanted requests to a trusted site.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CSU",
+    "full": "Channel Service Unit",
+    "desc": "Official SY0-601 acronym for Channel Service Unit; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CTM",
+    "full": "Counter-Mode",
+    "desc": "Official SY0-601 acronym for Counter-Mode; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "CTO",
+    "full": "Chief Technology Officer",
+    "desc": "Official SY0-601 acronym for Chief Technology Officer; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "CVE",
+    "full": "Common Vulnerabilities and Exposures",
+    "desc": "Official SY0-601 acronym for Common Vulnerabilities and Exposures; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "CVSS",
+    "full": "Common Vulnerability Scoring System",
+    "desc": "Official SY0-601 acronym for Common Vulnerability Scoring System; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "CYOD",
+    "full": "Choose Your Own Device",
+    "desc": "Official SY0-601 acronym for Choose Your Own Device; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DAC",
+    "full": "Discretionary Access Control",
+    "desc": "Official SY0-601 acronym for Discretionary Access Control; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "DBA",
+    "full": "Database Administrator",
+    "desc": "Official SY0-601 acronym for Database Administrator; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DDoS",
+    "full": "Distributed Denial-of-Service",
+    "desc": "Official SY0-601 acronym for Distributed Denial-of-Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DEP",
+    "full": "Data Execution Prevention",
+    "desc": "Marks memory pages as non-executable to block shellcode from running in data regions.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "DER",
+    "full": "Distinguished Encoding Rules",
+    "desc": "Official SY0-601 acronym for Distinguished Encoding Rules; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DES",
+    "full": "Data Encryption Standard",
+    "desc": "Legacy 56-bit symmetric cipher; considered broken due to its short key length.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "DHCP",
+    "full": "Dynamic Host Configuration Protocol",
+    "desc": "Automatically assigns IP addresses, gateways, and DNS servers to network clients.",
+    "port": "UDP/67 (server), UDP/68 (client)",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "DHE",
+    "full": "Diffie-Hellman Ephemeral",
+    "desc": "Key exchange that generates a fresh key pair for each session, enabling Perfect Forward Secrecy.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "DKIM",
+    "full": "Domain Keys Identified Mail",
+    "desc": "Official SY0-601 acronym for Domain Keys Identified Mail; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "DLL",
+    "full": "Dynamic-link Library",
+    "desc": "Official SY0-601 acronym for Dynamic-link Library; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DLP",
+    "full": "Data Loss Prevention",
+    "desc": "Monitors and restricts the movement of sensitive data to prevent unauthorized exfiltration.",
+    "cats": [
+      "🛡️",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DMARC",
+    "full": "Domain Message Authentication Reporting and Conformance",
+    "desc": "Official SY0-601 acronym for Domain Message Authentication Reporting and Conformance; commonly associated with identity/access management, and networking/protocols.",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "DNAT",
+    "full": "Destination Network Address Transaction",
+    "desc": "Official SY0-601 acronym for Destination Network Address Transaction; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "DNS",
+    "full": "Domain Name System",
+    "desc": "Resolves human-readable hostnames to IP addresses.",
+    "port": "TCP & UDP/53",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "DNSSEC",
+    "full": "Domain Name System Security Extensions",
+    "desc": "Official SY0-601 acronym for Domain Name System Security Extensions; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "port": "TCP & UDP/53",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DoS",
+    "full": "Denial-of-Service",
+    "desc": "Official SY0-601 acronym for Denial-of-Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DPO",
+    "full": "Data Protection Officer",
+    "desc": "Official SY0-601 acronym for Data Protection Officer; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DRP",
+    "full": "Disaster Recovery Plan",
+    "desc": "Documented procedures for restoring IT systems and data after a disaster or outage.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "DSA",
+    "full": "Digital Signature Algorithm",
+    "desc": "Official SY0-601 acronym for Digital Signature Algorithm; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "DSL",
+    "full": "Digital Subscriber Line",
+    "desc": "Official SY0-601 acronym for Digital Subscriber Line; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "EAP",
+    "full": "Extensible Authentication Protocol",
+    "desc": "Authentication framework used by 802.1X; supports many methods (PEAP, EAP-TLS...).",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "ECB",
+    "full": "Electronic Code Book",
+    "desc": "Official SY0-601 acronym for Electronic Code Book; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ECC",
+    "full": "Elliptic-curve Cryptography",
+    "desc": "Asymmetric cryptography using elliptic curves; achieves strong security with smaller keys than RSA.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "ECDHE",
+    "full": "Elliptic-curve Diffie-Hellman Ephemeral",
+    "desc": "DHE using elliptic-curve math; faster and provides PFS.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "ECDSA",
+    "full": "Elliptic-curve Digital Signature Algorithm",
+    "desc": "Official SY0-601 acronym for Elliptic-curve Digital Signature Algorithm; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "EDR",
+    "full": "Endpoint Detection and Response",
+    "desc": "Agent-based platform providing endpoint telemetry, behavioral detection, and containment capabilities.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "EFS",
+    "full": "Encrypted File System",
+    "desc": "Official SY0-601 acronym for Encrypted File System; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "EIP",
+    "full": "Extended Instruction Pointer",
+    "desc": "Official SY0-601 acronym for Extended Instruction Pointer; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "EOL",
+    "full": "End of Life",
+    "desc": "Official SY0-601 acronym for End of Life; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "EOS",
+    "full": "End of Service",
+    "desc": "Official SY0-601 acronym for End of Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ERP",
+    "full": "Enterprise Resource Planning",
+    "desc": "Official SY0-601 acronym for Enterprise Resource Planning; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ESN",
+    "full": "Electronic Serial Number",
+    "desc": "Official SY0-601 acronym for Electronic Serial Number; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ESP",
+    "full": "Encapsulating Security Payload",
+    "desc": "IPsec protocol providing encryption, integrity, and optional authentication.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "ESSID",
+    "full": "Extended Service Set Identifier",
+    "desc": "Official SY0-601 acronym for Extended Service Set Identifier; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "FACL",
+    "full": "File System Access Control List",
+    "desc": "Official SY0-601 acronym for File System Access Control List; commonly associated with identity/access management, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "🧠",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "FDE",
+    "full": "Full Disk Encryption",
+    "desc": "Encrypts an entire storage volume so data is unreadable without authentication (e.g., BitLocker).",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "FIM",
+    "full": "File Integrity Monitoring",
+    "desc": "Detects unauthorized changes to critical files, directories, or configurations.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "FPGA",
+    "full": "Field Programmable Gate Array",
+    "desc": "Official SY0-601 acronym for Field Programmable Gate Array; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "FRR",
+    "full": "False Rejection Rate",
+    "desc": "Official SY0-601 acronym for False Rejection Rate; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "FTP",
+    "full": "File Transfer Protocol",
+    "desc": "Legacy file transfer protocol; sends credentials in plaintext. Use SFTP instead.",
+    "port": "TCP/21 (control), TCP/20 (data)",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "FTPS",
+    "full": "Secured File Transfer Protocol",
+    "desc": "Official SY0-601 acronym for Secured File Transfer Protocol; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "port": "TCP/990 (implicit), TCP/21 (explicit)",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "GCM",
+    "full": "Galois/Counter Mode",
+    "desc": "Official SY0-601 acronym for Galois/Counter Mode; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "GDPR",
+    "full": "General Data Protection Regulation",
+    "desc": "EU regulation governing how organizations collect, store, and process personal data of EU residents.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "GPG",
+    "full": "GNU Privacy Guard",
+    "desc": "Official SY0-601 acronym for GNU Privacy Guard; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "GPO",
+    "full": "Group Policy Object",
+    "desc": "Official SY0-601 acronym for Group Policy Object; commonly associated with identity/access management, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "🧠",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "GPS",
+    "full": "Global Positioning System",
+    "desc": "Official SY0-601 acronym for Global Positioning System; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "GPU",
+    "full": "Graphics Processing Unit",
+    "desc": "Official SY0-601 acronym for Graphics Processing Unit; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "GRE",
+    "full": "Generic Routing Encapsulation",
+    "desc": "Official SY0-601 acronym for Generic Routing Encapsulation; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "HA",
+    "full": "High Availability",
+    "desc": "Official SY0-601 acronym for High Availability; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "HDD",
+    "full": "Hard Disk Drive",
+    "desc": "Official SY0-601 acronym for Hard Disk Drive; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "HIDS",
+    "full": "Host-based Intrusion Detection System",
+    "desc": "Agent installed on an individual system to monitor local logs, files, and activity.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "HIPS",
+    "full": "Host-based Intrusion Prevention System",
+    "desc": "IPS agent on an endpoint that can actively block malicious local activity.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "HMAC",
+    "full": "Hash-based Message Authentication Code",
+    "desc": "Combines a hash function with a shared secret to verify both integrity and authenticity.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "HOTP",
+    "full": "HMAC-based One-time Password",
+    "desc": "Official SY0-601 acronym for HMAC-based One-time Password; commonly associated with identity/access management, and cryptography or secure communications.",
+    "cats": [
+      "🧠",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "HSM",
+    "full": "Hardware Security Module",
+    "desc": "Dedicated physical device used for enterprise-grade cryptographic processing and key management.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "HSMaaS",
+    "full": "Hardware Security Module as a Service",
+    "desc": "Official SY0-601 acronym for Hardware Security Module as a Service; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "HTML",
+    "full": "Hypertext Markup Language",
+    "desc": "Official SY0-601 acronym for Hypertext Markup Language; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "HTTP",
+    "full": "Hypertext Transfer Protocol",
+    "desc": "Unencrypted web traffic protocol; data is transmitted in plaintext.",
+    "port": "TCP/80",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "HTTPS",
+    "full": "Hypertext Transfer Protocol Secure",
+    "desc": "HTTP encrypted over TLS; the standard for secure web browsing.",
+    "port": "TCP/443",
+    "cats": [
+      "⚡",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "HVAC",
+    "full": "Heating, Ventilation, Air Conditioning",
+    "desc": "Official SY0-601 acronym for Heating, Ventilation, Air Conditioning; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IaaS",
+    "full": "Infrastructure as a Service",
+    "desc": "Cloud model providing virtualized compute, storage, and networking; customer manages everything above.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IAM",
+    "full": "Identity and Access Management",
+    "desc": "Controls identities and resource permissions across systems.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "ICMP",
+    "full": "Internet Control Message Protocol",
+    "desc": "Official SY0-601 acronym for Internet Control Message Protocol; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "ICS",
+    "full": "Industrial Control Systems",
+    "desc": "Official SY0-601 acronym for Industrial Control Systems; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IDEA",
+    "full": "International Data Encryption Algorithm",
+    "desc": "Official SY0-601 acronym for International Data Encryption Algorithm; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "IDF",
+    "full": "Intermediate Distribution Frame",
+    "desc": "Official SY0-601 acronym for Intermediate Distribution Frame; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IdP",
+    "full": "Identity Provider",
+    "desc": "Official SY0-601 acronym for Identity Provider; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "IDS",
+    "full": "Intrusion Detection System",
+    "desc": "Passively monitors traffic/host activity and generates alerts; does NOT block.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "IEEE",
+    "full": "Institute of Electrical and Electronics Engineers",
+    "desc": "Official SY0-601 acronym for Institute of Electrical and Electronics Engineers; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IKE",
+    "full": "Internet Key Exchange",
+    "desc": "Negotiates Security Associations and cryptographic keys for IPsec tunnels.",
+    "port": "UDP/500",
+    "cats": [
+      "⚡",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "IM",
+    "full": "Instant Messaging",
+    "desc": "Official SY0-601 acronym for Instant Messaging; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IMAP4",
+    "full": "Internet Message Access Protocol v4",
+    "desc": "Official SY0-601 acronym for Internet Message Access Protocol v4; commonly associated with networking/protocols.",
+    "port": "TCP/143 (plain), TCP/993 (TLS)",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "IoC",
+    "full": "Indicators of Compromise",
+    "desc": "Observable artifacts or evidence suggesting a system has been compromised, such as malicious IPs, domains, hashes, or file paths.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "IoT",
+    "full": "Internet of Things",
+    "desc": "Official SY0-601 acronym for Internet of Things; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "IP",
+    "full": "Internet Protocol",
+    "desc": "Official SY0-601 acronym for Internet Protocol; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "IPS",
+    "full": "Intrusion Prevention System",
+    "desc": "Inline device that detects AND actively blocks malicious traffic in real time.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "IPSec",
+    "full": "Internet Protocol Security",
+    "desc": "Suite of protocols that authenticates and encrypts IP packets at the network layer.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "IR",
+    "full": "Incident Response",
+    "desc": "Structured process: Preparation → Identification → Containment → Eradication → Recovery → Lessons Learned.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "IRC",
+    "full": "Internet Relay Chat",
+    "desc": "Official SY0-601 acronym for Internet Relay Chat; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "IRP",
+    "full": "Incident Response Plan",
+    "desc": "Documented procedures, roles, and playbooks for responding to security incidents.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "ISA",
+    "full": "Interconnection Security Agreement",
+    "desc": "Official SY0-601 acronym for Interconnection Security Agreement; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ISFW",
+    "full": "Internal Segmentation Firewall",
+    "desc": "Official SY0-601 acronym for Internal Segmentation Firewall; commonly associated with security operations/defense, and networking/protocols.",
+    "cats": [
+      "🛡️",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "ISO",
+    "full": "International Organization for Standardization",
+    "desc": "Official SY0-601 acronym for International Organization for Standardization; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "ISP",
+    "full": "Internet Service Provider",
+    "desc": "Official SY0-601 acronym for Internet Service Provider; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ISSO",
+    "full": "Information Systems Security Officer",
+    "desc": "Official SY0-601 acronym for Information Systems Security Officer; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ITCP",
+    "full": "IT Contingency Plan",
+    "desc": "Official SY0-601 acronym for IT Contingency Plan; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "IV",
+    "full": "Initialization Vector",
+    "desc": "Random value used in encryption to ensure identical plaintexts produce different ciphertexts.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "KDC",
+    "full": "Key Distribution Center",
+    "desc": "The Kerberos server that authenticates clients and issues Ticket Granting Tickets (TGTs).",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "KEK",
+    "full": "Key Encryption Key",
+    "desc": "Official SY0-601 acronym for Key Encryption Key; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "L2TP",
+    "full": "Layer 2 Tunneling Protocol",
+    "desc": "Official SY0-601 acronym for Layer 2 Tunneling Protocol; commonly associated with networking/protocols.",
+    "port": "UDP/1701",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "LAN",
+    "full": "Local Area Network",
+    "desc": "Official SY0-601 acronym for Local Area Network; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "LDAP",
+    "full": "Lightweight Directory Access Protocol",
+    "desc": "Queries and modifies directory services (users, groups, objects).",
+    "port": "TCP/389 (plain), TCP/636 (LDAPS)",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "LEAP",
+    "full": "Lightweight Extensible Authentication Protocol",
+    "desc": "Official SY0-601 acronym for Lightweight Extensible Authentication Protocol; commonly associated with identity/access management, and networking/protocols.",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "MaaS",
+    "full": "Monitoring as a Service",
+    "desc": "Official SY0-601 acronym for Monitoring as a Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MAC",
+    "full": "Media Access Control",
+    "desc": "Official SY0-601 acronym for Media Access Control; commonly associated with identity/access management, and networking/protocols.",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "MAM",
+    "full": "Mobile Application Management",
+    "desc": "Official SY0-601 acronym for Mobile Application Management; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MAN",
+    "full": "Metropolitan Area Network",
+    "desc": "Official SY0-601 acronym for Metropolitan Area Network; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "MBR",
+    "full": "Master Boot Record",
+    "desc": "Official SY0-601 acronym for Master Boot Record; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MD5",
+    "full": "Message Digest 5",
+    "desc": "128-bit hash algorithm with known collision vulnerabilities; broken for security use.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "MDF",
+    "full": "Main Distribution Frame",
+    "desc": "Official SY0-601 acronym for Main Distribution Frame; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MDM",
+    "full": "Mobile Device Management",
+    "desc": "Official SY0-601 acronym for Mobile Device Management; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MFA",
+    "full": "Multifactor Authentication",
+    "desc": "Requires two or more factors: something you know, have, or are.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "MFD",
+    "full": "Multifunction Device",
+    "desc": "Official SY0-601 acronym for Multifunction Device; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MFP",
+    "full": "Multifunction Printer",
+    "desc": "Official SY0-601 acronym for Multifunction Printer; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "ML",
+    "full": "Machine Learning",
+    "desc": "Official SY0-601 acronym for Machine Learning; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MMS",
+    "full": "Multimedia Message Service",
+    "desc": "Official SY0-601 acronym for Multimedia Message Service; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MOA",
+    "full": "Memorandum of Agreement",
+    "desc": "Official SY0-601 acronym for Memorandum of Agreement; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MOU",
+    "full": "Memorandum of Understanding",
+    "desc": "Official SY0-601 acronym for Memorandum of Understanding; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MPLS",
+    "full": "Multiprotocol Label Switching",
+    "desc": "Official SY0-601 acronym for Multiprotocol Label Switching; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "MS-CHAP",
+    "full": "Microsoft Challenge-Handshake Authentication Protocol",
+    "desc": "Official SY0-601 acronym for Microsoft Challenge-Handshake Authentication Protocol; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "MSA",
+    "full": "Measurement Systems Analysis",
+    "desc": "Official SY0-601 acronym for Measurement Systems Analysis; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MSP",
+    "full": "Managed Service Provider",
+    "desc": "Official SY0-601 acronym for Managed Service Provider; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MSSP",
+    "full": "Managed Security Service Provider",
+    "desc": "Official SY0-601 acronym for Managed Security Service Provider; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MTBF",
+    "full": "Mean Time Between Failures",
+    "desc": "Official SY0-601 acronym for Mean Time Between Failures; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MTTF",
+    "full": "Mean Time to Failure",
+    "desc": "Official SY0-601 acronym for Mean Time to Failure; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MTTR",
+    "full": "Mean Time to Repair",
+    "desc": "Official SY0-601 acronym for Mean Time to Repair; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "MTU",
+    "full": "Maximum Transmission Unit",
+    "desc": "Official SY0-601 acronym for Maximum Transmission Unit; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NAC",
+    "full": "Network Access Control",
+    "desc": "Official SY0-601 acronym for Network Access Control; commonly associated with identity/access management, and networking/protocols.",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NAS",
+    "full": "Network-attached Storage",
+    "desc": "Official SY0-601 acronym for Network-attached Storage; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NAT",
+    "full": "Network Address Translation",
+    "desc": "Maps private IP addresses to one or more public IPs at a router boundary.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NDA",
+    "full": "Non-disclosure Agreement",
+    "desc": "Official SY0-601 acronym for Non-disclosure Agreement; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "NFC",
+    "full": "Near-field Communication",
+    "desc": "Official SY0-601 acronym for Near-field Communication; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "NFV",
+    "full": "Network Function Virtualization",
+    "desc": "Official SY0-601 acronym for Network Function Virtualization; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "NG-SWG",
+    "full": "Next-generation Secure Web Gateway",
+    "desc": "Official SY0-601 acronym for Next-generation Secure Web Gateway; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "NGFW",
+    "full": "Next-generation Firewall",
+    "desc": "Official SY0-601 acronym for Next-generation Firewall; commonly associated with security operations/defense, and networking/protocols.",
+    "cats": [
+      "🛡️",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NIC",
+    "full": "Network Interface Card",
+    "desc": "Official SY0-601 acronym for Network Interface Card; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NIDS",
+    "full": "Network-based Intrusion Detection System",
+    "desc": "Passive sensor placed on a network segment to analyze traffic for anomalies or signatures.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "NIPS",
+    "full": "Network-based Intrusion Prevention System",
+    "desc": "Inline IPS placed in the network path to block malicious traffic before it reaches targets.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "NIST",
+    "full": "National Institute of Standards & Technology",
+    "desc": "US agency that publishes cybersecurity frameworks and guidelines (NIST CSF, SP 800-53, etc.).",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "NOC",
+    "full": "Network Operations Center",
+    "desc": "Official SY0-601 acronym for Network Operations Center; commonly associated with networking/protocols, security operations/defense, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "🛡️",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "NTFS",
+    "full": "New Technology File System",
+    "desc": "Official SY0-601 acronym for New Technology File System; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "NTLM",
+    "full": "New Technology LAN Manager",
+    "desc": "Official SY0-601 acronym for New Technology LAN Manager; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "NTP",
+    "full": "Network Time Protocol",
+    "desc": "Synchronizes clocks across devices; critical for log correlation and Kerberos authentication.",
+    "port": "UDP/123",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "OCSP",
+    "full": "Online Certificate Status Protocol",
+    "desc": "Real-time protocol for checking whether a specific certificate has been revoked.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "OID",
+    "full": "Object Identifier",
+    "desc": "Official SY0-601 acronym for Object Identifier; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OS",
+    "full": "Operating System",
+    "desc": "Official SY0-601 acronym for Operating System; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OSI",
+    "full": "Open Systems Interconnection",
+    "desc": "Official SY0-601 acronym for Open Systems Interconnection; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OSINT",
+    "full": "Open-source Intelligence",
+    "desc": "Official SY0-601 acronym for Open-source Intelligence; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OSPF",
+    "full": "Open Shortest Path First",
+    "desc": "Official SY0-601 acronym for Open Shortest Path First; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "OT",
+    "full": "Operational Technology",
+    "desc": "Official SY0-601 acronym for Operational Technology; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OTA",
+    "full": "Over-The-Air",
+    "desc": "Official SY0-601 acronym for Over-The-Air; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OTG",
+    "full": "On-The-Go",
+    "desc": "Official SY0-601 acronym for On-The-Go; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "OVAL",
+    "full": "Open Vulnerability and Assessment Language",
+    "desc": "Official SY0-601 acronym for Open Vulnerability and Assessment Language; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "OWASP",
+    "full": "Open Web Application Security Project",
+    "desc": "Non-profit that publishes the OWASP Top 10 list of critical web application vulnerabilities.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "P12",
+    "full": "PKCS #12",
+    "desc": "Official SY0-601 acronym for PKCS #12; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "P2P",
+    "full": "Peer-to-Peer",
+    "desc": "Official SY0-601 acronym for Peer-to-Peer; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PaaS",
+    "full": "Platform as a Service",
+    "desc": "Cloud model providing a runtime/platform; customer manages applications and data.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PAC",
+    "full": "Proxy Auto Configuration",
+    "desc": "Official SY0-601 acronym for Proxy Auto Configuration; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PAM",
+    "full": "Pluggable Authentication Modules",
+    "desc": "Official SY0-601 acronym for Pluggable Authentication Modules; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "PAM",
+    "full": "Privileged Access Management",
+    "desc": "Official SY0-601 acronym for Privileged Access Management; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "PAP",
+    "full": "Password Authentication Protocol",
+    "desc": "Official SY0-601 acronym for Password Authentication Protocol; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "PAT",
+    "full": "Port Address Translation",
+    "desc": "NAT variant that multiplexes many private hosts through a single public IP using port numbers.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "PBKDF2",
+    "full": "Password-based Key Derivation Function 2",
+    "desc": "Intentionally slow key-stretching function that makes brute-force attacks on passwords expensive.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "PBX",
+    "full": "Private Branch Exchange",
+    "desc": "Official SY0-601 acronym for Private Branch Exchange; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PCAP",
+    "full": "Packet Capture",
+    "desc": "Official SY0-601 acronym for Packet Capture; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "PCI DSS",
+    "full": "Payment Card Industry Data Security Standard",
+    "desc": "Security standard required for any organization that stores, processes, or transmits cardholder data.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PDU",
+    "full": "Power Distribution Unit",
+    "desc": "Official SY0-601 acronym for Power Distribution Unit; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PE",
+    "full": "Portable Executable",
+    "desc": "Official SY0-601 acronym for Portable Executable; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PEAP",
+    "full": "Protected Extensible Authentication Protocol",
+    "desc": "Protected Extensible Authentication Protocol; encapsulates EAP inside a TLS tunnel so credentials are protected in transit.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "PED",
+    "full": "Portable Electronic Device",
+    "desc": "Official SY0-601 acronym for Portable Electronic Device; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PEM",
+    "full": "Privacy Enhanced Mail",
+    "desc": "Official SY0-601 acronym for Privacy Enhanced Mail; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "PFS",
+    "full": "Perfect Forward Secrecy",
+    "desc": "Session keys are independent; compromise of a long-term key does not expose past session traffic.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "PGP",
+    "full": "Pretty Good Privacy",
+    "desc": "Official SY0-601 acronym for Pretty Good Privacy; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "PHI",
+    "full": "Personal Health Information",
+    "desc": "Health-related personal information tied to an individual; the SY0-601 acronym list expands PHI as Personal Health Information.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PII",
+    "full": "Personally Identifiable Information",
+    "desc": "Any data that can be used alone or combined to identify a specific individual.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PIN",
+    "full": "Personal Identification Number",
+    "desc": "Official SY0-601 acronym for Personal Identification Number; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PIV",
+    "full": "Personal Identity Verification",
+    "desc": "Official SY0-601 acronym for Personal Identity Verification; commonly associated with identity/access management, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "🧠",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PKCS",
+    "full": "Public Key Cryptography Standards",
+    "desc": "Official SY0-601 acronym for Public Key Cryptography Standards; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "PKI",
+    "full": "Public Key Infrastructure",
+    "desc": "Framework of policies, hardware, software, and procedures for managing digital certificates.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "PoC",
+    "full": "Proof of Concept",
+    "desc": "Official SY0-601 acronym for Proof of Concept; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "POP",
+    "full": "Post Office Protocol",
+    "desc": "Official SY0-601 acronym for Post Office Protocol; commonly associated with networking/protocols.",
+    "port": "TCP/110 (plain), TCP/995 (TLS)",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "POTS",
+    "full": "Plain Old Telephone Service",
+    "desc": "Official SY0-601 acronym for Plain Old Telephone Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PPP",
+    "full": "Point-to-Point Protocol",
+    "desc": "Official SY0-601 acronym for Point-to-Point Protocol; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "PPTP",
+    "full": "Point-to-Point Tunneling Protocol",
+    "desc": "Official SY0-601 acronym for Point-to-Point Tunneling Protocol; commonly associated with networking/protocols.",
+    "port": "TCP/1723",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "PSK",
+    "full": "Preshared Key",
+    "desc": "Official SY0-601 acronym for Preshared Key; commonly associated with identity/access management, and cryptography or secure communications.",
+    "cats": [
+      "🧠",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "PTZ",
+    "full": "Pan-Tilt-Zoom",
+    "desc": "Official SY0-601 acronym for Pan-Tilt-Zoom; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "PUP",
+    "full": "Potentially Unwanted Program",
+    "desc": "Official SY0-601 acronym for Potentially Unwanted Program; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "QA",
+    "full": "Quality Assurance",
+    "desc": "Official SY0-601 acronym for Quality Assurance; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "QoS",
+    "full": "Quality of Service",
+    "desc": "Official SY0-601 acronym for Quality of Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RA",
+    "full": "Registration Authority",
+    "desc": "Verifies an applicant's identity before forwarding a certificate request to the CA.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "RAD",
+    "full": "Rapid Application Development",
+    "desc": "Official SY0-601 acronym for Rapid Application Development; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RADIUS",
+    "full": "Remote Authentication Dial-in User Service",
+    "desc": "Centralized AAA server used for network access control.",
+    "port": "UDP/1812 (auth), UDP/1813 (accounting)",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "RAID",
+    "full": "Redundant Array of Inexpensive Disks",
+    "desc": "Official SY0-601 acronym for Redundant Array of Inexpensive Disks; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RAM",
+    "full": "Random Access Memory",
+    "desc": "Official SY0-601 acronym for Random Access Memory; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RAS",
+    "full": "Remote Access Server",
+    "desc": "Official SY0-601 acronym for Remote Access Server; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "RAT",
+    "full": "Remote Access Trojan",
+    "desc": "Official SY0-601 acronym for Remote Access Trojan; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "RC4",
+    "full": "Rivest Cipher version 4",
+    "desc": "Official SY0-601 acronym for Rivest Cipher version 4; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "RCS",
+    "full": "Rich Communication Services",
+    "desc": "Official SY0-601 acronym for Rich Communication Services; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RFC",
+    "full": "Request for Comments",
+    "desc": "Official SY0-601 acronym for Request for Comments; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RFID",
+    "full": "Radio Frequency Identification",
+    "desc": "Official SY0-601 acronym for Radio Frequency Identification; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RIPEMD",
+    "full": "RACE Integrity Primitives Evaluation Message Digest",
+    "desc": "Official SY0-601 acronym for RACE Integrity Primitives Evaluation Message Digest; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "ROI",
+    "full": "Return on Investment",
+    "desc": "Official SY0-601 acronym for Return on Investment; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RPO",
+    "full": "Recovery Point Objective",
+    "desc": "Maximum acceptable amount of data loss, measured as time since the last good backup.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RSA",
+    "full": "Rivest, Shamir, & Adleman",
+    "desc": "Widely used asymmetric encryption algorithm based on the difficulty of factoring large integers.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "RTBH",
+    "full": "Remotely Triggered Black Hole",
+    "desc": "Official SY0-601 acronym for Remotely Triggered Black Hole; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "RTO",
+    "full": "Recovery Time Objective",
+    "desc": "Maximum acceptable duration of downtime before service must be restored.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RTOS",
+    "full": "Real-time Operating System",
+    "desc": "Official SY0-601 acronym for Real-time Operating System; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "RTP",
+    "full": "Real-time Transport Protocol",
+    "desc": "Official SY0-601 acronym for Real-time Transport Protocol; commonly associated with networking/protocols.",
+    "port": "Dynamic UDP ports",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "S/MIME",
+    "full": "Secure/Multipurpose Internet Mail Extensions",
+    "desc": "Official SY0-601 acronym for Secure/Multipurpose Internet Mail Extensions; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SaaS",
+    "full": "Software as a Service",
+    "desc": "Cloud model where the provider manages the full application stack; customer manages data and users.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SAE",
+    "full": "Simultaneous Authentication of Equals",
+    "desc": "WPA3 handshake replacing PSK; resistant to offline dictionary attacks.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "SAML",
+    "full": "Security Assertions Markup Language",
+    "desc": "Official SY0-601 acronym for Security Assertions Markup Language; commonly associated with identity/access management, and cryptography or secure communications.",
+    "cats": [
+      "🧠",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "SCADA",
+    "full": "Supervisory Control and Data Acquisition",
+    "desc": "Official SY0-601 acronym for Supervisory Control and Data Acquisition; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SCAP",
+    "full": "Security Content Automation Protocol",
+    "desc": "Official SY0-601 acronym for Security Content Automation Protocol; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "SCEP",
+    "full": "Simple Certificate Enrollment Protocol",
+    "desc": "Official SY0-601 acronym for Simple Certificate Enrollment Protocol; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SDK",
+    "full": "Software Development Kit",
+    "desc": "Official SY0-601 acronym for Software Development Kit; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SDLC",
+    "full": "Software Development Life Cycle",
+    "desc": "Official SY0-601 acronym for Software Development Life Cycle; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SDLM",
+    "full": "Software Development Life-cycle Methodology",
+    "desc": "Official SY0-601 acronym for Software Development Life-cycle Methodology; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SDN",
+    "full": "Software-defined Networking",
+    "desc": "Official SY0-601 acronym for Software-defined Networking; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SDP",
+    "full": "Service Delivery Platform",
+    "desc": "Official SY0-601 acronym for Service Delivery Platform; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SDV",
+    "full": "Software-defined Visibility",
+    "desc": "Official SY0-601 acronym for Software-defined Visibility; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SED",
+    "full": "Self-Encrypting Drives",
+    "desc": "Official SY0-601 acronym for Self-Encrypting Drives; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "SEH",
+    "full": "Structured Exception Handling",
+    "desc": "Official SY0-601 acronym for Structured Exception Handling; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "SFTP",
+    "full": "SSH File Transfer Protocol",
+    "desc": "Secure file transfer that runs over SSH (not related to FTPS).",
+    "port": "TCP/22",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SHA",
+    "full": "Secure Hashing Algorithm",
+    "desc": "Family of secure hashing algorithms used for integrity verification.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "SIEM",
+    "full": "Security Information and Event Management",
+    "desc": "Centralized platform for log aggregation, correlation, alerting, and compliance reporting.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "SIM",
+    "full": "Subscriber Identity Module",
+    "desc": "Official SY0-601 acronym for Subscriber Identity Module; commonly associated with identity/access management.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "SIP",
+    "full": "Session Initiation Protocol",
+    "desc": "Signaling protocol for establishing VoIP and video calls.",
+    "port": "TCP & UDP/5060, TLS/5061",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SLA",
+    "full": "Service-level Agreement",
+    "desc": "Official SY0-601 acronym for Service-level Agreement; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SLE",
+    "full": "Single Loss Expectancy",
+    "desc": "Expected monetary loss from a single occurrence of a risk: Asset Value × Exposure Factor.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SMB",
+    "full": "Server Message Block",
+    "desc": "Windows file and printer sharing protocol; also used by ransomware like WannaCry (EternalBlue).",
+    "port": "TCP/445",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SMS",
+    "full": "Short Message Service",
+    "desc": "Official SY0-601 acronym for Short Message Service; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SMTP",
+    "full": "Simple Mail Transfer Protocol",
+    "desc": "Standard protocol for sending email between mail servers.",
+    "port": "TCP/25",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SMTPS",
+    "full": "Simple Mail Transfer Protocol Secure",
+    "desc": "Simple Mail Transfer Protocol Secure; SMTP wrapped with TLS/SSL for encrypted email submission.",
+    "port": "TCP/465",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SNMP",
+    "full": "Simple Network Management Protocol",
+    "desc": "Monitors and manages network devices; traps are asynchronous alerts sent by agents.",
+    "port": "UDP/161 (queries), UDP/162 (traps)",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SOAP",
+    "full": "Simple Object Access Protocol",
+    "desc": "Official SY0-601 acronym for Simple Object Access Protocol; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SOAR",
+    "full": "Security Orchestration, Automation, Response",
+    "desc": "Automates security workflows and response actions using playbooks and integrations.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "SOC",
+    "full": "Security Operations Center",
+    "desc": "Official SY0-601 acronym for Security Operations Center; commonly associated with networking/protocols, security operations/defense, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "🛡️",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SoC",
+    "full": "System on Chip",
+    "desc": "Official SY0-601 acronym for System on Chip; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SPF",
+    "full": "Sender Policy Framework",
+    "desc": "Official SY0-601 acronym for Sender Policy Framework; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SPIM",
+    "full": "Spam over Instant Messaging",
+    "desc": "Official SY0-601 acronym for Spam over Instant Messaging; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "SQL",
+    "full": "Structured Query Language",
+    "desc": "Official SY0-601 acronym for Structured Query Language; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SQLi",
+    "full": "SQL Injection",
+    "desc": "Inserts malicious SQL into application input fields to manipulate or dump the backend database.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SRTP",
+    "full": "Secure Real-time Transport Protocol",
+    "desc": "Official SY0-601 acronym for Secure Real-time Transport Protocol; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "port": "Dynamic UDP ports",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SSD",
+    "full": "Solid State Drive",
+    "desc": "Official SY0-601 acronym for Solid State Drive; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SSH",
+    "full": "Secure Shell",
+    "desc": "Encrypted protocol for remote login, file transfer (SFTP), and tunneling.",
+    "port": "TCP/22",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SSID",
+    "full": "Service Set Identifier",
+    "desc": "The broadcast name of a wireless network visible to client devices.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "SSL",
+    "full": "Secure Sockets Layer",
+    "desc": "Deprecated predecessor to TLS; vulnerable to POODLE and BEAST attacks. Should not be used.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "SSO",
+    "full": "Single Sign-on",
+    "desc": "One set of credentials grants access to multiple systems or applications.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "STIX",
+    "full": "Structured Threat Information eXpression",
+    "desc": "Official SY0-601 acronym for Structured Threat Information eXpression; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "STP",
+    "full": "Shielded Twisted Pair",
+    "desc": "Official SY0-601 acronym for Shielded Twisted Pair; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "SWG",
+    "full": "Secure Web Gateway",
+    "desc": "Official SY0-601 acronym for Secure Web Gateway; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "TACACS+",
+    "full": "Terminal Access Controller Access Control System",
+    "desc": "AAA protocol commonly used for device administration; encrypts the session payload and commonly appears in Cisco environments.",
+    "port": "TCP/49",
+    "cats": [
+      "🧠",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "TAXII",
+    "full": "Trusted Automated eXchange of Intelligence Information",
+    "desc": "Official SY0-601 acronym for Trusted Automated eXchange of Intelligence Information; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "TCP/IP",
+    "full": "Transmission Control Protocol/Internet Protocol",
+    "desc": "Official SY0-601 acronym for Transmission Control Protocol/Internet Protocol; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "TGT",
+    "full": "Ticket Granting Ticket",
+    "desc": "Initial Kerberos token used to request service-specific tickets without re-entering credentials.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "TKIP",
+    "full": "Temporal Key Integrity Protocol",
+    "desc": "Legacy replacement for WEP used in WPA; deprecated and no longer considered secure.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "TLS",
+    "full": "Transport Layer Security",
+    "desc": "Cryptographic protocol securing data in transit; successor to SSL. Used by HTTPS.",
+    "port": "TCP/443",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "TOTP",
+    "full": "Time-based One Time Password",
+    "desc": "Official SY0-601 acronym for Time-based One Time Password; commonly associated with identity/access management, and cryptography or secure communications.",
+    "cats": [
+      "🧠",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "TPM",
+    "full": "Trusted Platform Module",
+    "desc": "Hardware chip providing secure key storage, attestation, and measured boot functionality.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "TSIG",
+    "full": "Transaction Signature",
+    "desc": "Official SY0-601 acronym for Transaction Signature; commonly associated with cryptography or secure communications, and networking/protocols.",
+    "cats": [
+      "🔐",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "TTP",
+    "full": "Tactics, Techniques, and Procedures",
+    "desc": "Official SY0-601 acronym for Tactics, Techniques, and Procedures; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "UAT",
+    "full": "User Acceptance Testing",
+    "desc": "Official SY0-601 acronym for User Acceptance Testing; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "UDP",
+    "full": "User Datagram Protocol",
+    "desc": "Connectionless, low-latency transport with no delivery guarantees.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "UEBA",
+    "full": "User and Entity Behavior Analytics",
+    "desc": "Official SY0-601 acronym for User and Entity Behavior Analytics; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "UEFI",
+    "full": "Unified Extensible Firmware Interface",
+    "desc": "Modern BIOS replacement; supports Secure Boot, faster startup, and GPT disks.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "UEM",
+    "full": "Unified Endpoint Management",
+    "desc": "Official SY0-601 acronym for Unified Endpoint Management; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "UPS",
+    "full": "Uninterruptible Power Supply",
+    "desc": "Official SY0-601 acronym for Uninterruptible Power Supply; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "URI",
+    "full": "Uniform Resource Identifier",
+    "desc": "Official SY0-601 acronym for Uniform Resource Identifier; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "URL",
+    "full": "Universal Resource Locator",
+    "desc": "Official SY0-601 acronym for Universal Resource Locator; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "USB",
+    "full": "Universal Serial Bus",
+    "desc": "Official SY0-601 acronym for Universal Serial Bus; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "USB OTG",
+    "full": "USB On-The-Go",
+    "desc": "Official SY0-601 acronym for USB On-The-Go; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "UTM",
+    "full": "Unified Threat Management",
+    "desc": "Official SY0-601 acronym for Unified Threat Management; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "UTP",
+    "full": "Unshielded Twisted Pair",
+    "desc": "Official SY0-601 acronym for Unshielded Twisted Pair; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VBA",
+    "full": "Visual Basic for Applications",
+    "desc": "Official SY0-601 acronym for Visual Basic for Applications; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VDE",
+    "full": "Virtual Desktop Environment",
+    "desc": "Official SY0-601 acronym for Virtual Desktop Environment; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VDI",
+    "full": "Virtual Desktop Infrastructure",
+    "desc": "Official SY0-601 acronym for Virtual Desktop Infrastructure; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VLAN",
+    "full": "Virtual Local Area Network",
+    "desc": "Official SY0-601 acronym for Virtual Local Area Network; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VLSM",
+    "full": "Variable-length Subnet Masking",
+    "desc": "Official SY0-601 acronym for Variable-length Subnet Masking; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "VM",
+    "full": "Virtual Machine",
+    "desc": "Official SY0-601 acronym for Virtual Machine; commonly associated with networking/protocols, and governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "⚡",
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VoIP",
+    "full": "Voice over IP",
+    "desc": "Official SY0-601 acronym for Voice over IP; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "VPC",
+    "full": "Virtual Private Cloud",
+    "desc": "Logically isolated network segment within a public cloud provider's infrastructure.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "VPN",
+    "full": "Virtual Private Network",
+    "desc": "Creates an encrypted tunnel between two endpoints over an untrusted network.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "VTC",
+    "full": "Video Teleconferencing",
+    "desc": "Official SY0-601 acronym for Video Teleconferencing; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "WAF",
+    "full": "Web Application Firewall",
+    "desc": "Official SY0-601 acronym for Web Application Firewall; commonly associated with security operations/defense.",
+    "cats": [
+      "🛡️"
+    ]
+  },
+  {
+    "abbr": "WAP",
+    "full": "Wireless Access Point",
+    "desc": "Official SY0-601 acronym for Wireless Access Point; commonly associated with networking/protocols.",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "WEP",
+    "full": "Wired Equivalent Privacy",
+    "desc": "Official SY0-601 acronym for Wired Equivalent Privacy; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "WIDS",
+    "full": "Wireless Intrusion Detection System",
+    "desc": "Official SY0-601 acronym for Wireless Intrusion Detection System; commonly associated with security operations/defense, and networking/protocols.",
+    "cats": [
+      "🛡️",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "WIPS",
+    "full": "Wireless Intrusion Prevention System",
+    "desc": "Official SY0-601 acronym for Wireless Intrusion Prevention System; commonly associated with security operations/defense, and networking/protocols.",
+    "cats": [
+      "🛡️",
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "WORM",
+    "full": "Write Once Read Many",
+    "desc": "Official SY0-601 acronym for Write Once Read Many; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "WPA",
+    "full": "WiFi Protected Access",
+    "desc": "Official SY0-601 acronym for WiFi Protected Access; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "WPS",
+    "full": "WiFi Protected Setup",
+    "desc": "Simplified wireless pairing feature; vulnerable to PIN brute-force (Reaver attack). Disable it.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "XaaS",
+    "full": "Anything as a Service",
+    "desc": "Official SY0-601 acronym for Anything as a Service; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "XML",
+    "full": "Extensible Markup Language",
+    "desc": "Official SY0-601 acronym for Extensible Markup Language; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "XOR",
+    "full": "Exclusive OR",
+    "desc": "Official SY0-601 acronym for Exclusive OR; commonly associated with cryptography or secure communications.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "XSRF",
+    "full": "Cross-site Request Forgery",
+    "desc": "Official SY0-601 acronym for Cross-site Request Forgery; commonly associated with governance, risk, cloud, data, or business operations.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "XSS",
+    "full": "Cross-site Scripting",
+    "desc": "Injects malicious scripts into web pages viewed by other users to steal data or session tokens.",
+    "cats": [
+      "📊"
+    ]
+  },
+  {
+    "abbr": "802.1X",
+    "full": "Network Access Control (Port-Based)",
+    "desc": "Port-based authentication standard; clients must authenticate before network access is granted.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "EAP-TLS",
+    "full": "Extensible Authentication Protocol – Transport Layer Security",
+    "desc": "Certificate-based mutual authentication; considered one of the most secure EAP methods.",
+    "cats": [
+      "🧠",
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "Kerberos",
+    "full": "Kerberos",
+    "desc": "Ticket-based network authentication protocol; a KDC issues TGTs to authenticate clients.",
+    "cats": [
+      "🧠"
+    ]
+  },
+  {
+    "abbr": "RDP",
+    "full": "Remote Desktop Protocol",
+    "desc": "Microsoft protocol that provides a graphical desktop session over the network.",
+    "port": "TCP/3389",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "TCP",
+    "full": "Transmission Control Protocol",
+    "desc": "Reliable, connection-oriented transport protocol using a three-way handshake (SYN/SYN-ACK/ACK).",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "Telnet",
+    "full": "Telnet",
+    "desc": "Plaintext remote terminal protocol; insecure. Replaced by SSH.",
+    "port": "TCP/23",
+    "cats": [
+      "⚡"
+    ]
+  },
+  {
+    "abbr": "WPA2",
+    "full": "Wi-Fi Protected Access 2",
+    "desc": "Wi-Fi security protocol using AES/CCMP; the current standard for most wireless networks.",
+    "cats": [
+      "🔐"
+    ]
+  },
+  {
+    "abbr": "WPA3",
+    "full": "Wi-Fi Protected Access 3",
+    "desc": "Latest Wi-Fi security standard; replaces PSK with SAE for stronger handshake protection.",
+    "cats": [
+      "🔐"
+    ]
+  }
 ]
