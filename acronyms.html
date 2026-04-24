@@ -521,6 +521,7 @@ function nextCard() {
   }
   state.current = state.remaining[0];
   state.isFlipped = false;
+  state.hasBeenFlipped = false;
 
   // Determine effective mode for this card
   if (state.mode === 'mixed') {
@@ -606,14 +607,16 @@ function updateProgress() {
 //  FLIP
 // ═══════════════════════════════════════════════════
 function flipCard() {
-  if (state.isFlipped) return;
-  state.isFlipped = true;
-  document.getElementById('flip-inner').classList.add('flipped');
+  state.isFlipped = !state.isFlipped;
+  document.getElementById('flip-inner').classList.toggle('flipped', state.isFlipped);
 
-  setTimeout(() => {
-    document.getElementById('action-row').classList.remove('hidden');
-    document.getElementById('btn-skip').classList.remove('hidden');
-  }, 250);
+  if (state.isFlipped && !state.hasBeenFlipped) {
+    state.hasBeenFlipped = true;
+    setTimeout(() => {
+      document.getElementById('action-row').classList.remove('hidden');
+      document.getElementById('btn-skip').classList.remove('hidden');
+    }, 250);
+  }
 }
 
 // Keyboard: Space / Enter to flip, ← / 1 for learning, → / 2 for know
@@ -623,7 +626,7 @@ document.addEventListener('keydown', e => {
 
   if (e.key === ' ' || e.key === 'Enter') {
     e.preventDefault();
-    if (!state.isFlipped) flipCard();
+    flipCard();
   } else if ((e.key === 'ArrowRight' || e.key === '2') && state.isFlipped) {
     markCard(true);
   } else if ((e.key === 'ArrowLeft' || e.key === '1') && state.isFlipped) {
