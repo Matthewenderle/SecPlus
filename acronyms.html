@@ -270,6 +270,17 @@
         </div>
       </div>
 
+      <div class="config-row">
+        <span class="config-label">Number of Cards</span>
+        <div class="pill-group" id="count-pills">
+          <button class="pill active" onclick="setCount(0, this)">All</button>
+          <button class="pill" onclick="setCount(10, this)">10</button>
+          <button class="pill" onclick="setCount(20, this)">20</button>
+          <button class="pill" onclick="setCount(30, this)">30</button>
+          <button class="pill" onclick="setCount(50, this)">50</button>
+        </div>
+      </div>
+
       <div class="config-row" style="margin-bottom:8px">
         <span class="config-label">Quiz Mode</span>
         <div>
@@ -406,6 +417,7 @@ let ALL_ACRONYMS = [];
 // ═══════════════════════════════════════════════════
 let state = {
   mode: 'abbr',       // 'abbr' | 'def' | 'mixed'
+  count: 0,           // 0 = all
   selectedCats: ['all'],
   deck: [],
   remaining: [],
@@ -455,13 +467,21 @@ function setMode(m) {
   });
 }
 
+function setCount(n, btn) {
+  state.count = n;
+  document.querySelectorAll('#count-pills .pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateMenuStats();
+}
+
 function filteredCards() {
   if (state.selectedCats.includes('all')) return [...ALL_ACRONYMS];
   return ALL_ACRONYMS.filter(a => a.cats.some(c => state.selectedCats.includes(c)));
 }
 
 function updateMenuStats() {
-  const n = filteredCards().length;
+  const all = filteredCards().length;
+  const n = state.count > 0 ? Math.min(state.count, all) : all;
   document.getElementById('card-count-label').textContent = n + ' cards ready';
   document.getElementById('start-sub').textContent = n + ' cards';
 }
@@ -488,7 +508,8 @@ function quitStudy() {
 //  START / RESTART
 // ═══════════════════════════════════════════════════
 function startStudy() {
-  const cards = filteredCards().sort(() => Math.random() - 0.5);
+  let cards = filteredCards().sort(() => Math.random() - 0.5);
+  if (state.count > 0) cards = cards.slice(0, state.count);
   state.deck = cards;
   state.remaining = [...cards];
   state.known = [];
