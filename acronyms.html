@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Security+ Acronym Flashcards</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 0 0 60px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #app { max-width: 680px; margin: 0 auto; padding: 24px 16px; }
+
+  /* ── TYPOGRAPHY ── */
+  h1 { font-size: 30px; font-weight: bold; color: #f1f5f9; letter-spacing: -0.5px; margin-bottom: 4px; }
+  h2 { font-size: 22px; color: #f1f5f9; margin-bottom: 16px; }
+  h3 { font-size: 15px; color: #cbd5e1; letter-spacing: 0.3px; margin-bottom: 18px; }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block; background: #1e40af; color: #93c5fd;
+    font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold;
+    letter-spacing: 2px; padding: 4px 12px; border-radius: 4px; margin-bottom: 12px;
+  }
+  .subtitle  { font-size: 17px; color: #94a3b8; margin-bottom: 4px; }
+  .subtitle2 { font-size: 13px; color: #64748b; }
+
+  /* ── CARD ── */
+  .card {
+    background: #1e293b; border: 1px solid #334155;
+    border-radius: 12px; padding: 22px; margin-bottom: 18px;
+  }
+
+  /* ── CONFIG PILLS ── */
+  .config-row { margin-bottom: 20px; }
+  .config-label {
+    display: block; font-size: 12px; color: #64748b; margin-bottom: 8px;
+    font-family: 'Courier New', monospace; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    background: #0f172a; border: 1px solid #334155; color: #94a3b8;
+    border-radius: 20px; padding: 6px 14px; font-size: 13px;
+    cursor: pointer; font-family: Georgia, serif; transition: all 0.15s;
+  }
+  .pill.active { background: #1d4ed8; border-color: #3b82f6; color: #bfdbfe; }
+
+  /* ── BUTTONS ── */
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-start {
+    flex: 1; border: none; color: #fff; border-radius: 10px;
+    padding: 16px 14px; font-size: 15px; font-weight: bold;
+    cursor: pointer; display: flex; flex-direction: column;
+    align-items: center; gap: 4px; min-width: 130px; font-family: Georgia, serif;
+    transition: opacity 0.15s;
+  }
+  .btn-start:active { opacity: 0.8; }
+  .btn-start.primary { background: #1d4ed8; }
+  .btn-start.secondary { background: #164e63; }
+  .btn-start.success { background: #065f46; }
+  .btn-sub { font-size: 11px; color: #93c5fd; font-weight: normal; font-family: 'Courier New', monospace; }
+
+  /* ── MODE OPTIONS ── */
+  .mode-option {
+    background: #0f172a; border: 1px solid #334155; color: #94a3b8;
+    border-radius: 8px; padding: 11px 14px; font-size: 13px;
+    cursor: pointer; font-family: Georgia, serif; transition: all 0.15s;
+    text-align: left; width: 100%; margin-bottom: 8px;
+  }
+  .mode-option:last-child { margin-bottom: 0; }
+  .mode-option.active { background: #1d4ed8; border-color: #3b82f6; color: #bfdbfe; }
+  .mode-sub {
+    display: block; font-size: 11px; color: #475569;
+    font-family: 'Courier New', monospace; margin-top: 3px;
+  }
+  .mode-option.active .mode-sub { color: #93c5fd; }
+
+  /* ── HEADER ── */
+  .page-header { text-align: center; margin-bottom: 28px; padding-top: 14px; position: relative; }
+  .back-link {
+    position: absolute; top: 16px; left: 0;
+    display: inline-flex; align-items: center; gap: 5px;
+    color: #64748b; font-size: 12px; font-family: 'Courier New', monospace;
+    text-decoration: none; transition: color 0.15s;
+  }
+  .back-link:hover { color: #cbd5e1; }
+  .github-link {
+    position: absolute; top: 14px; right: 0;
+    display: inline-flex; align-items: center; gap: 6px;
+    color: #64748b; font-size: 12px; font-family: 'Courier New', monospace;
+    text-decoration: none; transition: color 0.15s;
+  }
+  .github-link:hover { color: #cbd5e1; }
+  .github-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ── PROGRESS BAR ── */
+  .top-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .progress-label { font-size: 13px; color: #64748b; white-space: nowrap; font-family: 'Courier New', monospace; }
+  .progress-track { flex: 1; height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; display: flex; }
+  .progress-known { height: 100%; background: #10b981; transition: width 0.4s ease; }
+  .progress-seen  { height: 100%; background: #ef4444; transition: width 0.4s ease; }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 16px; font-family: 'Courier New', monospace; font-size: 12px;
+  }
+  .stat-item { display: flex; align-items: center; gap: 5px; color: #64748b; }
+  .stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-known    { background: #10b981; }
+  .dot-learning { background: #ef4444; }
+  .dot-rem      { background: #334155; }
+
+  /* ── FLIP CARD ── */
+  .flip-container {
+    perspective: 1200px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+  }
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    min-height: 240px;
+    height: var(--card-h, 240px);
+    transform-style: preserve-3d;
+    transition: transform 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .flip-inner.flipped { transform: rotateY(180deg); }
+
+  .card-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: #1e293b; border: 1px solid #334155;
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 28px 24px; text-align: center;
+    overflow: hidden;
+  }
+  .card-face-back {
+    transform: rotateY(180deg) translateZ(1px);
+    background: #172036; border-color: #2d4a7a;
+  }
+
+  /* Front: acronym mode */
+  .card-abbr {
+    font-family: 'Courier New', monospace;
+    font-weight: bold; color: #f1f5f9; letter-spacing: -1px;
+    word-break: break-word; line-height: 1.1; margin-bottom: 10px;
+  }
+  .card-prompt {
+    font-size: 12px; color: #475569;
+    font-family: 'Courier New', monospace; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .tap-hint {
+    position: absolute; bottom: 14px; right: 16px;
+    font-size: 11px; color: #1e3a5f;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* Front: definition mode */
+  .card-def-text {
+    font-size: 15px; color: #cbd5e1; line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* Back of card */
+  .card-full-name {
+    font-size: 19px; font-weight: bold; color: #93c5fd;
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .card-desc-text { font-size: 13px; color: #94a3b8; line-height: 1.65; }
+  .card-port-badge {
+    margin-top: 12px;
+    display: inline-block; background: #0f172a;
+    border: 1px solid #334155; color: #4ade80;
+    font-family: 'Courier New', monospace; font-size: 12px;
+    padding: 3px 10px; border-radius: 4px;
+  }
+  .card-cats { margin-top: 10px; font-size: 15px; letter-spacing: 2px; }
+
+  /* Answer revealed: abbr on back for definition-mode */
+  .card-answer-abbr {
+    font-family: 'Courier New', monospace;
+    font-weight: bold; color: #f1f5f9; margin-bottom: 12px;
+    word-break: break-word; line-height: 1.1;
+  }
+
+  /* ── ACTION BUTTONS ── */
+  .action-row { display: flex; gap: 12px; margin-bottom: 8px; }
+  .btn-know, .btn-learning {
+    flex: 1; border: none; border-radius: 10px;
+    padding: 15px 12px; font-size: 15px; font-weight: bold;
+    cursor: pointer; font-family: Georgia, serif; transition: opacity 0.15s;
+  }
+  .btn-know     { background: #052e16; border: 1px solid #16a34a; color: #4ade80; }
+  .btn-learning { background: #450a0a; border: 1px solid #dc2626; color: #f87171; }
+  .btn-know:active, .btn-learning:active { opacity: 0.75; }
+  .btn-skip {
+    background: transparent; border: none; color: #475569;
+    font-size: 12px; cursor: pointer; padding: 6px 0;
+    font-family: 'Courier New', monospace; display: block; width: 100%; text-align: center;
+    letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.15s;
+  }
+  .btn-skip:hover { color: #94a3b8; }
+
+  /* ── RESULTS ── */
+  .results-hero { text-align: center; margin-bottom: 28px; padding-top: 12px; }
+  .score-circle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 90px; height: 90px; border-radius: 50%;
+    font-size: 28px; font-weight: bold; color: #fff; margin-bottom: 14px;
+  }
+  .result-title { font-size: 24px; margin-bottom: 6px; color: #f1f5f9; }
+  .result-sub   { color: #94a3b8; font-size: 14px; }
+
+  .missed-item { border-bottom: 1px solid #243044; padding-bottom: 12px; margin-bottom: 12px; }
+  .missed-item:last-child { border-bottom: none; }
+  .missed-abbr {
+    font-weight: bold; font-family: 'Courier New', monospace;
+    color: #93c5fd; font-size: 14px; margin-bottom: 2px;
+  }
+  .missed-full { font-size: 12px; color: #64748b; }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid #334155; margin: 16px 0; }
+
+  /* ── HIDDEN ── */
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ═══════════ MENU ═══════════ -->
+  <div id="screen-menu">
+    <div class="page-header">
+      <a class="back-link" href="index.html">← Practice Exam</a>
+      <a class="github-link" href="https://github.com/Matthewenderle/SecPlus" target="_blank" rel="noopener noreferrer" title="View on GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <div class="badge">SY0-701</div>
+      <h1>Acronym Flashcards</h1>
+      <p class="subtitle">Test Your Knowledge</p>
+      <p class="subtitle2" id="card-count-label">— cards ready</p>
+    </div>
+
+    <div class="card">
+      <h3>Configure Your Deck</h3>
+
+      <div class="config-row">
+        <span class="config-label">Category Filter</span>
+        <div class="pill-group" id="cat-pills">
+          <button class="pill active" onclick="toggleCat('all', this)">All</button>
+          <button class="pill" onclick="toggleCat('🧠', this)">🧠 Identity</button>
+          <button class="pill" onclick="toggleCat('🔐', this)">🔐 Encryption</button>
+          <button class="pill" onclick="toggleCat('⚡', this)">⚡ Ports</button>
+          <button class="pill" onclick="toggleCat('🛡️', this)">🛡️ Detection</button>
+          <button class="pill" onclick="toggleCat('📊', this)">📊 Governance</button>
+        </div>
+      </div>
+
+      <div class="config-row" style="margin-bottom:8px">
+        <span class="config-label">Quiz Mode</span>
+        <div>
+          <button class="mode-option active" id="mode-abbr" onclick="setMode('abbr')">
+            Acronym → Definition
+            <span class="mode-sub">See the abbreviation, recall what it means</span>
+          </button>
+          <button class="mode-option" id="mode-def" onclick="setMode('def')">
+            Definition → Acronym
+            <span class="mode-sub">See the description, recall the abbreviation</span>
+          </button>
+          <button class="mode-option" id="mode-mixed" onclick="setMode('mixed')">
+            Mixed
+            <span class="mode-sub">Random mix of both directions</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:0">
+      <span class="config-label" style="display:block;margin-bottom:8px">Card Bank</span>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="pill" onclick="downloadAcronyms()">⬇ Download JSON</button>
+        <label class="pill" style="cursor:pointer;margin:0">
+          ⬆ Upload JSON
+          <input type="file" accept=".json,application/json" onchange="handleUpload(event)" style="display:none">
+        </label>
+        <span id="upload-label" style="font-size:12px;color:#64748b;font-family:'Courier New',monospace"></span>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-bottom:0">
+      <button class="btn-start primary" onclick="startStudy()">
+        🃏 Start Flashcards
+        <span class="btn-sub" id="start-sub">— cards</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════ STUDY ═══════════ -->
+  <div id="screen-study" class="hidden">
+    <div class="page-header" style="margin-bottom:16px">
+      <a class="back-link" href="#" onclick="quitStudy(); return false;">← Menu</a>
+      <p class="subtitle2" id="round-label">Round 1</p>
+    </div>
+
+    <div class="top-bar">
+      <span class="progress-label" id="card-counter">1 / 10</span>
+      <div class="progress-track">
+        <div class="progress-known" id="bar-known" style="width:0%"></div>
+        <div class="progress-seen"  id="bar-seen"  style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-dot dot-known"></div>
+        <span id="stat-known">0 known</span>
+      </div>
+      <div class="stat-item">
+        <div class="stat-dot dot-learning"></div>
+        <span id="stat-learning">0 learning</span>
+      </div>
+      <div class="stat-item">
+        <div class="stat-dot dot-rem"></div>
+        <span id="stat-rem">0 remaining</span>
+      </div>
+    </div>
+
+    <!-- flip card -->
+    <div class="flip-container" id="flip-container" onclick="flipCard()" tabindex="0" role="button" aria-label="Flip card">
+      <div class="flip-inner" id="flip-inner">
+
+        <!-- FRONT FACE -->
+        <div class="card-face card-face-front" id="face-front">
+          <!-- populated by JS -->
+        </div>
+
+        <!-- BACK FACE -->
+        <div class="card-face card-face-back" id="face-back">
+          <!-- populated by JS -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- action buttons (hidden until flipped) -->
+    <div class="action-row hidden" id="action-row">
+      <button class="btn-learning" onclick="markCard(false)">✗ Still Learning</button>
+      <button class="btn-know"     onclick="markCard(true)">✓ Know It</button>
+    </div>
+    <button class="btn-skip hidden" id="btn-skip" onclick="skipCard()">skip →</button>
+  </div>
+
+  <!-- ═══════════ ROUND DONE ═══════════ -->
+  <div id="screen-done" class="hidden">
+    <div class="results-hero">
+      <div class="score-circle" id="done-badge">—</div>
+      <h2 class="result-title" id="done-title">Round Complete</h2>
+      <p class="result-sub" id="done-sub"></p>
+    </div>
+
+    <div class="card hidden" id="missed-card">
+      <h3>Still Learning</h3>
+      <div id="missed-list"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-start secondary hidden" id="btn-retry" onclick="retryLearning()">
+        🔁 Review Missed
+        <span class="btn-sub" id="retry-sub"></span>
+      </button>
+      <button class="btn-start primary" onclick="showMenu()">
+        ← New Deck
+      </button>
+      <button class="btn-start success" onclick="startStudy()">
+        ↺ Restart
+        <span class="btn-sub">Same settings</span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  ACRONYM DATA — loaded from acronyms.json
+// ═══════════════════════════════════════════════════
+let ALL_ACRONYMS = [];
+
+
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+let state = {
+  mode: 'abbr',       // 'abbr' | 'def' | 'mixed'
+  selectedCats: ['all'],
+  deck: [],
+  remaining: [],
+  known: [],
+  learning: [],
+  current: null,
+  isFlipped: false,
+  round: 1,
+  cardMode: 'abbr',   // effective mode per-card for 'mixed'
+};
+
+// ═══════════════════════════════════════════════════
+//  CONFIG
+// ═══════════════════════════════════════════════════
+function toggleCat(cat, btn) {
+  if (cat === 'all') {
+    state.selectedCats = ['all'];
+    document.querySelectorAll('#cat-pills .pill').forEach((b, i) => {
+      b.classList.toggle('active', i === 0);
+    });
+  } else {
+    state.selectedCats = state.selectedCats.filter(c => c !== 'all');
+    if (state.selectedCats.includes(cat)) {
+      state.selectedCats = state.selectedCats.filter(c => c !== cat);
+    } else {
+      state.selectedCats.push(cat);
+    }
+    if (state.selectedCats.length === 0) state.selectedCats = ['all'];
+
+    document.querySelectorAll('#cat-pills .pill').forEach(b => {
+      const c = b.textContent.trim();
+      if (c === 'All') {
+        b.classList.toggle('active', state.selectedCats.includes('all'));
+      } else {
+        const emoji = c.charAt(0);
+        b.classList.toggle('active', state.selectedCats.includes(emoji));
+      }
+    });
+  }
+  updateMenuStats();
+}
+
+function setMode(m) {
+  state.mode = m;
+  ['abbr','def','mixed'].forEach(id => {
+    document.getElementById('mode-' + id).classList.toggle('active', m === id);
+  });
+}
+
+function filteredCards() {
+  if (state.selectedCats.includes('all')) return [...ALL_ACRONYMS];
+  return ALL_ACRONYMS.filter(a => a.cats.some(c => state.selectedCats.includes(c)));
+}
+
+function updateMenuStats() {
+  const n = filteredCards().length;
+  document.getElementById('card-count-label').textContent = n + ' cards ready';
+  document.getElementById('start-sub').textContent = n + ' cards';
+}
+
+// ═══════════════════════════════════════════════════
+//  SCREEN SWITCHING
+// ═══════════════════════════════════════════════════
+function showScreen(id) {
+  ['screen-menu','screen-study','screen-done'].forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== id);
+  });
+  window.scrollTo(0, 0);
+}
+
+function showMenu() {
+  showScreen('screen-menu');
+}
+
+function quitStudy() {
+  showScreen('screen-menu');
+}
+
+// ═══════════════════════════════════════════════════
+//  START / RESTART
+// ═══════════════════════════════════════════════════
+function startStudy() {
+  const cards = filteredCards().sort(() => Math.random() - 0.5);
+  state.deck = cards;
+  state.remaining = [...cards];
+  state.known = [];
+  state.learning = [];
+  state.current = null;
+  state.isFlipped = false;
+  state.round = 1;
+  showScreen('screen-study');
+  document.getElementById('round-label').textContent = 'Round 1';
+  nextCard();
+}
+
+function retryLearning() {
+  state.remaining = [...state.learning].sort(() => Math.random() - 0.5);
+  state.learning = [];
+  state.round++;
+  state.isFlipped = false;
+  document.getElementById('round-label').textContent = 'Round ' + state.round + ' — Missed Cards';
+  showScreen('screen-study');
+  nextCard();
+}
+
+// ═══════════════════════════════════════════════════
+//  CARD RENDERING
+// ═══════════════════════════════════════════════════
+function nextCard() {
+  if (state.remaining.length === 0) {
+    showDone();
+    return;
+  }
+  state.current = state.remaining[0];
+  state.isFlipped = false;
+
+  // Determine effective mode for this card
+  if (state.mode === 'mixed') {
+    state.cardMode = Math.random() < 0.5 ? 'abbr' : 'def';
+  } else {
+    state.cardMode = state.mode;
+  }
+
+  renderCard();
+  updateProgress();
+
+  // Reset flip state
+  document.getElementById('flip-inner').classList.remove('flipped');
+  document.getElementById('action-row').classList.add('hidden');
+  document.getElementById('btn-skip').classList.add('hidden');
+}
+
+function renderCard() {
+  const card = state.current;
+  const front = document.getElementById('face-front');
+  const back  = document.getElementById('face-back');
+
+  // Abbreviation font size based on length
+  const abbrLen = card.abbr.length;
+  const abbrSize = abbrLen <= 3 ? '56px' : abbrLen <= 5 ? '44px' : abbrLen <= 7 ? '34px' : '26px';
+
+  if (state.cardMode === 'abbr') {
+    // FRONT: show abbreviation
+    front.innerHTML =
+      '<div class="card-abbr" style="font-size:' + abbrSize + '">' + escHtml(card.abbr) + '</div>' +
+      '<div class="card-prompt">What does this stand for?</div>' +
+      '<div class="tap-hint">tap to reveal</div>';
+
+    // BACK: show full name + description
+    back.innerHTML =
+      '<div class="card-full-name">' + escHtml(card.full) + '</div>' +
+      '<div class="card-desc-text">' + escHtml(card.desc) + '</div>' +
+      (card.port ? '<div class="card-port-badge">⚡ ' + escHtml(card.port) + '</div>' : '') +
+      '<div class="card-cats">' + card.cats.join(' ') + '</div>';
+  } else {
+    // FRONT: show definition, user must recall abbreviation
+    front.innerHTML =
+      '<div class="card-desc-text" style="font-size:14px">' + escHtml(card.desc) + '</div>' +
+      '<div class="card-prompt" style="margin-top:14px">What is the acronym?</div>' +
+      '<div class="tap-hint">tap to reveal</div>';
+
+    // BACK: show abbreviation prominently + full name
+    back.innerHTML =
+      '<div class="card-answer-abbr" style="font-size:' + abbrSize + '">' + escHtml(card.abbr) + '</div>' +
+      '<div class="card-full-name" style="font-size:15px;margin-bottom:6px">' + escHtml(card.full) + '</div>' +
+      (card.port ? '<div class="card-port-badge">⚡ ' + escHtml(card.port) + '</div>' : '') +
+      '<div class="card-cats">' + card.cats.join(' ') + '</div>';
+  }
+}
+
+function updateProgress() {
+  const total = state.deck.length;
+  const knownCount    = state.known.length;
+  const learningCount = state.learning.length;
+  const remaining     = state.remaining.length;
+
+  const knownPct    = total > 0 ? (knownCount / total * 100).toFixed(1) : 0;
+  const learningPct = total > 0 ? (learningCount / total * 100).toFixed(1) : 0;
+
+  document.getElementById('bar-known').style.width = knownPct + '%';
+  document.getElementById('bar-seen').style.width  = learningPct + '%';
+
+  document.getElementById('card-counter').textContent =
+    (total - remaining + 1) + ' / ' + total;
+
+  document.getElementById('stat-known').textContent    = knownCount + ' known';
+  document.getElementById('stat-learning').textContent  = learningCount + ' learning';
+  document.getElementById('stat-rem').textContent       = remaining + ' remaining';
+}
+
+// ═══════════════════════════════════════════════════
+//  FLIP
+// ═══════════════════════════════════════════════════
+function flipCard() {
+  if (state.isFlipped) return;
+  state.isFlipped = true;
+  document.getElementById('flip-inner').classList.add('flipped');
+
+  setTimeout(() => {
+    document.getElementById('action-row').classList.remove('hidden');
+    document.getElementById('btn-skip').classList.remove('hidden');
+  }, 250);
+}
+
+// Keyboard: Space / Enter to flip, ← / 1 for learning, → / 2 for know
+document.addEventListener('keydown', e => {
+  const screen = document.getElementById('screen-study');
+  if (screen.classList.contains('hidden')) return;
+
+  if (e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault();
+    if (!state.isFlipped) flipCard();
+  } else if ((e.key === 'ArrowRight' || e.key === '2') && state.isFlipped) {
+    markCard(true);
+  } else if ((e.key === 'ArrowLeft' || e.key === '1') && state.isFlipped) {
+    markCard(false);
+  } else if (e.key === 's' && !state.isFlipped) {
+    skipCard();
+  }
+});
+
+// ═══════════════════════════════════════════════════
+//  MARK / SKIP
+// ═══════════════════════════════════════════════════
+function markCard(isKnown) {
+  if (!state.isFlipped) return;
+  const card = state.remaining.shift();
+
+  if (isKnown) {
+    state.known.push(card);
+  } else {
+    state.learning.push(card);
+  }
+
+  state.isFlipped = false;
+  nextCard();
+}
+
+function skipCard() {
+  // Move card to back of remaining without marking
+  const card = state.remaining.shift();
+  state.remaining.push(card);
+  state.isFlipped = false;
+  nextCard();
+}
+
+// ═══════════════════════════════════════════════════
+//  DONE SCREEN
+// ═══════════════════════════════════════════════════
+function showDone() {
+  const total    = state.deck.length;
+  const known    = state.known.length;
+  const learning = state.learning.length;
+  const pct      = Math.round(known / total * 100);
+
+  const badge = document.getElementById('done-badge');
+  badge.textContent = pct + '%';
+  badge.style.background = pct === 100 ? '#10b981' : pct >= 70 ? '#1d4ed8' : '#d97706';
+
+  document.getElementById('done-title').textContent =
+    pct === 100 ? '🎉 Perfect Round!' : pct >= 70 ? '💪 Good Progress' : '📚 Keep Drilling';
+
+  document.getElementById('done-sub').textContent =
+    known + ' of ' + total + ' known · ' + learning + ' still learning';
+
+  // Missed card list
+  const missedCard = document.getElementById('missed-card');
+  const missedList = document.getElementById('missed-list');
+  if (state.learning.length > 0) {
+    missedList.innerHTML = state.learning.map(c =>
+      '<div class="missed-item">' +
+        '<div class="missed-abbr">' + escHtml(c.abbr) + '</div>' +
+        '<div class="missed-full">' + escHtml(c.full) + '</div>' +
+      '</div>'
+    ).join('');
+    missedCard.classList.remove('hidden');
+
+    const retryBtn = document.getElementById('btn-retry');
+    retryBtn.classList.remove('hidden');
+    document.getElementById('retry-sub').textContent = state.learning.length + ' cards';
+  } else {
+    missedCard.classList.add('hidden');
+    document.getElementById('btn-retry').classList.add('hidden');
+  }
+
+  showScreen('screen-done');
+}
+
+// ═══════════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════════
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ═══════════════════════════════════════════════════
+//  DOWNLOAD / UPLOAD
+// ═══════════════════════════════════════════════════
+function downloadAcronyms() {
+  const blob = new Blob([JSON.stringify(ALL_ACRONYMS, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'acronyms.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function handleUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data) || data.length === 0) throw new Error('Invalid format');
+      // Validate each entry has required fields
+      data.forEach((item, i) => {
+        if (typeof item.abbr !== 'string' || typeof item.full !== 'string' ||
+            typeof item.desc !== 'string' || !Array.isArray(item.cats)) {
+          throw new Error('Item ' + i + ' missing required fields (abbr, full, desc, cats)');
+        }
+      });
+      ALL_ACRONYMS = data;
+      updateMenuStats();
+      document.getElementById('upload-label').textContent = '✓ ' + data.length + ' cards loaded';
+      e.target.value = '';
+    } catch(err) {
+      alert('Invalid acronyms.json: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+async function initApp() {
+  try {
+    const res = await fetch('acronyms.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    ALL_ACRONYMS = await res.json();
+  } catch (err) {
+    console.error('Could not load acronyms.json:', err);
+    document.getElementById('card-count-label').textContent =
+      'Failed to load acronyms.json. Upload a file below.';
+  }
+  updateMenuStats();
+  showScreen('screen-menu');
+}
+
+initApp();
+</script>
+</body>
+</html>
